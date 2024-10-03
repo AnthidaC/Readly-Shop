@@ -30,7 +30,15 @@ public class SignIn : MonoBehaviour
             }
             else
             {
-                Debug.Log(www.downloadHandler.text);
+                string tex = www.downloadHandler.text;
+                if (tex != null) { 
+                    if(tex.Equals("success"))
+                    {
+                        print("create user success");
+                    }
+                    print(tex);
+                }
+
             }
         }
     }
