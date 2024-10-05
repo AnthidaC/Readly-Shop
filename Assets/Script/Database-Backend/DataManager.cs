@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -14,13 +15,23 @@ public class DataManager : MonoBehaviour
     public static Cart userCart;
     //public static List<> 
 
-
     private void Awake()
+    {
+            DataManager[] objs = FindObjectsOfType<DataManager>();
+            print("5555555 "+objs.Length);
+            if (objs.Length > 1)
+            {
+                Destroy(this.gameObject);
+            }
+
+            DontDestroyOnLoad(this.gameObject);
+    }
+    private void Start()
     {
         StartCoroutine(GetNormalData());
         StartCoroutine(loginUser("yyyyy", "5555"));
     }
-    public IEnumerator loginUser(String name, String pass)
+    public IEnumerator loginUser(String name, String pass, System.Action<int> callback = null)
     {
         WWWForm form = new WWWForm();
         form.AddField("name", name);
@@ -42,7 +53,8 @@ public class DataManager : MonoBehaviour
                 {
                     if (tex.Equals("0") || tex.Equals(" password  not correct") || tex.Equals("3: Name don't exists") || tex.Equals("1: Connect failed"))
                     {
-                        yield return null;
+                        if (callback != null) callback.Invoke(0);
+
                     }
                     else
                     {
@@ -58,6 +70,8 @@ public class DataManager : MonoBehaviour
                         Debug.Log("Login success Userid :"+user.UserID);
                         StartCoroutine(GetOrderData());
                         StartCoroutine(GetCartData());
+                        if (callback != null) callback.Invoke(1);
+
                     }
                     
                 }
@@ -241,7 +255,7 @@ public class DataManager : MonoBehaviour
             }
         }
     }
-    public IEnumerator CreateOrder(string address,Dictionary<Book,int> addBook)
+    public IEnumerator CreateOrder(string address,Dictionary<Book,int> addBook, System.Action<int> callback = null)
     {
         WWWForm form = new WWWForm();
         form.AddField("id", user.UserID);
@@ -255,6 +269,7 @@ public class DataManager : MonoBehaviour
             if (www.isNetworkError || www.isHttpError)
             {
                 Debug.Log(www.error);
+                if (callback != null) callback.Invoke(0);
             }
             else
             {
@@ -264,6 +279,7 @@ public class DataManager : MonoBehaviour
                     if (tex.Equals("0") || tex.Equals(" password  not correct") || tex.Equals("3: Name don't exists") || tex.Equals("1: Connect failed"))
                     {
                         print("Error create order data or have null order data");
+                        if (callback != null) callback.Invoke(0);
                         yield return null;
                     }
                     else
@@ -295,7 +311,7 @@ public class DataManager : MonoBehaviour
                         
                         print("order sussess");
                         StartCoroutine(GetOrderData());
-                        yield return true;
+                        if (callback != null) callback.Invoke(1);
                     }
 
                 }
@@ -303,7 +319,7 @@ public class DataManager : MonoBehaviour
             }
         }
     }
-    public IEnumerator AddCartData(int bookID ,int num)
+    public IEnumerator AddCartData(int bookID ,int num, System.Action<int> callback = null)
     {
         WWWForm form = new WWWForm();
         form.AddField("cartID", user.CastID);
@@ -326,12 +342,14 @@ public class DataManager : MonoBehaviour
                     if (tex.Equals("0") || tex.Equals(" password  not correct") || tex.Equals("3: Name don't exists") || tex.Equals("1: Connect failed"))
                     {
                         print("Error get cart data or have null order data");
+                        callback?.Invoke(0);
                         yield return null;
                     }
                     else
                     {
                         
                         print("add cart data ss");
+                        callback?.Invoke(1);
                     }
 
                 }
@@ -339,7 +357,7 @@ public class DataManager : MonoBehaviour
             }
         }
     }
-    public IEnumerator changeNumBookInCart(int bookID, int num)
+    public IEnumerator ChangeNumBookInCart(int bookID, int num, System.Action<int> callback = null)
     {
         WWWForm form = new WWWForm();
         form.AddField("cartID", user.CastID);
@@ -362,12 +380,14 @@ public class DataManager : MonoBehaviour
                     if (tex.Equals("0") || tex.Equals(" password  not correct") || tex.Equals("3: Name don't exists") || tex.Equals("1: Connect failed"))
                     {
                         print("Error get cart data or have null order data");
+                        if (callback != null) callback.Invoke(0);
                         yield return null;
                     }
                     else
                     {
-
+                        userCart.ChangAmountBookFromCart(bookID, num);
                         print("add cart data ss");
+                        if (callback != null) callback.Invoke(1);
                     }
 
                 }
@@ -375,7 +395,7 @@ public class DataManager : MonoBehaviour
             }
         }
     }
-    public IEnumerator DeleteBookInCart(int bookID)
+    public IEnumerator DeleteBookInCart(int bookID, System.Action<int> callback = null)
     {
         WWWForm form = new WWWForm();
         form.AddField("cartID", user.CastID);
@@ -397,12 +417,14 @@ public class DataManager : MonoBehaviour
                     if (tex.Equals("0") || tex.Equals(" password  not correct") || tex.Equals("3: Name don't exists") || tex.Equals("1: Connect failed"))
                     {
                         print("Error get cart data or have null order data");
+                        if (callback != null) callback.Invoke(0);
                         yield return null;
                     }
                     else
                     {
-
+                        userCart.RemoveBookFromCart(bookID);
                         print("add cart data ss");
+                        if (callback != null) callback.Invoke(1);
                     }
 
                 }
@@ -410,7 +432,7 @@ public class DataManager : MonoBehaviour
             }
         }
     }
-    public IEnumerator DeleteAllBookInCart()
+    public IEnumerator DeleteAllBookInCart(System.Action<int> callback = null)
     {
         WWWForm form = new WWWForm();
         form.AddField("cartID", user.CastID);
@@ -431,12 +453,14 @@ public class DataManager : MonoBehaviour
                     if (tex.Equals("0") || tex.Equals(" password  not correct") || tex.Equals("3: Name don't exists") || tex.Equals("1: Connect failed"))
                     {
                         print("Error get cart data or have null order data");
+                        if (callback != null) callback.Invoke(0);
                         yield return null;
                     }
                     else
                     {
-
-                        print("add cart data ss");
+                        userCart.Clear();
+                        print("delete cart data ss");
+                        if (callback != null) callback.Invoke(1);
                     }
 
                 }
