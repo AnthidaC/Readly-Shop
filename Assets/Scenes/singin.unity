@@ -3068,7 +3068,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: sign in
+  m_text: sing in
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3309,8 +3309,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SignIn, Assembly-CSharp
+      - m_Target: {fileID: 1104024504}
+        m_TargetAssemblyTypeName: UserRegistor, Assembly-CSharp
         m_MethodName: RegistorSubmit
         m_Mode: 1
         m_Arguments:
@@ -3617,11 +3617,11 @@ MonoBehaviour:
   nameInput: {fileID: 1841153302}
   passwordInput: {fileID: 706126970}
   emailInput: {fileID: 629431047}
-  SingInPage: {fileID: 0}
-  successPage: {fileID: 0}
+  SingInPage: {fileID: 961767998}
+  successPage: {fileID: 980231189}
   Usernamelogin: {fileID: 762339654}
   passwordLogin: {fileID: 1209837800}
-  LogInPage: {fileID: 0}
+  LogInPage: {fileID: 1524912703}
   dataManager: {fileID: 0}
 --- !u!1 &1174122193
 GameObject:

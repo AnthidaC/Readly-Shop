@@ -29,7 +29,7 @@ public class DataManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(GetNormalData());
-        StartCoroutine(loginUser("yyyyy", "5555"));
+        //StartCoroutine(loginUser("yyyyy", "5555"));
     }
     public IEnumerator loginUser(String name, String pass, System.Action<int> callback = null)
     {
