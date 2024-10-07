@@ -36,7 +36,7 @@ public class Order
         set
         {
             if (value == "Cancelled") status = orderStatus.complete;
-            else if (value == "To ship") status = orderStatus.To_ship;
+            else if (value == "To ship"||value== "To_ship") status = orderStatus.To_ship;
             else if (value == "complete") status = orderStatus.complete;
         }
     }

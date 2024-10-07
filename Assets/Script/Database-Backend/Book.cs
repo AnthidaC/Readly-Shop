@@ -46,7 +46,7 @@ public class Book
         set
         {
             if(value == "Horror") type = typeBook.Horror;
-            else if(value == "Self help") type = typeBook.Self_help;
+            else if(value == "Self help"||value== "Self_help") type = typeBook.Self_help;
             else if(value == "Business") type = typeBook.Business;
             else if (value == "Non_fiction") type = typeBook.Non_fiction;
             else if (value == "Novel") type = typeBook.Novel;
@@ -59,9 +59,9 @@ public class Book
         get { return status.ToString(); }
         set
         {
-            if(value == "on shelf")status=statusBook.on_shelf;
+            if(value == "on shelf"||value == "on_shelf") status=statusBook.on_shelf;
             else if (value == "hide") status = statusBook.hide;
-            else if (value == "Out of stock") status = statusBook.Out_of_stock;
+            else if (value == "Out of stock"||value== "Out_of_stock") status = statusBook.Out_of_stock;
         }
     }
 

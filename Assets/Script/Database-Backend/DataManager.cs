@@ -29,7 +29,7 @@ public class DataManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(GetNormalData());
-        StartCoroutine(loginUser("yyyyy", "5555"));
+        //StartCoroutine(loginUser("yyyyy", "5555"));
     }
     public IEnumerator loginUser(String name, String pass, System.Action<int> callback = null)
     {
@@ -158,7 +158,7 @@ public class DataManager : MonoBehaviour
     public IEnumerator GetOrderDetail(int id)
     {
         WWWForm form = new WWWForm();
-        form.AddField("id", user.UserID);
+        form.AddField("id", id);
 
         using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/Readly_Pj/GetBookFromOrder.php", form))
         {
