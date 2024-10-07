@@ -46,7 +46,7 @@ public class Book
         set
         {
             if(value == "Horror") type = typeBook.Horror;
-            else if(value == "Self help") type = typeBook.Self_help;
+            else if(value == "Self help"||value== "Self_help") type = typeBook.Self_help;
             else if(value == "Business") type = typeBook.Business;
             else if (value == "Non_fiction") type = typeBook.Non_fiction;
             else if (value == "Novel") type = typeBook.Novel;

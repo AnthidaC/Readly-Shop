@@ -158,7 +158,7 @@ public class DataManager : MonoBehaviour
     public IEnumerator GetOrderDetail(int id)
     {
         WWWForm form = new WWWForm();
-        form.AddField("id", user.UserID);
+        form.AddField("id", id);
 
         using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/Readly_Pj/GetBookFromOrder.php", form))
         {
