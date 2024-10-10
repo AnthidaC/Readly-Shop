@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum orderStatus
+public enum orderStatus:int
 {
-    Cancelled,
-    To_ship,
-    complete
+    Cancelled=2,
+    To_ship=0,
+    complete=1
 }
 public class Order 
 {
@@ -35,9 +35,18 @@ public class Order
         get => status.ToString(); 
         set
         {
-            if (value == "Cancelled") status = orderStatus.complete;
+            if (value == "Cancelled") status = orderStatus.Cancelled;
             else if (value == "To ship"||value== "To_ship") status = orderStatus.To_ship;
             else if (value == "complete") status = orderStatus.complete;
+        }
+    }
+    public int StatusInt
+    {
+        get => ((int)status);
+        set
+        {
+            status = (orderStatus)value;
+            
         }
     }
     public int UserID { get => userID; set => userID = value; }
