@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/singin.unity
     guid: 6ee892487a98f4048a7a292d7a325cee
   - enabled: 1
+    path: Assets/Scenes/show.unity
+    guid: a5a8efb605ebf08438e72df3b5faa61f
+  - enabled: 1
     path: Assets/Scenes/SuccessScene.unity
     guid: 71d7048004f299641966dd528d89f730
   m_configObjects: {}
