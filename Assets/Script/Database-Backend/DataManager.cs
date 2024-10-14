@@ -25,11 +25,12 @@ public class DataManager : MonoBehaviour
             }
 
             DontDestroyOnLoad(this.gameObject);
+            StartCoroutine(GetNormalData());
     }
     private void Start()
     {
-        StartCoroutine(GetNormalData());
-        StartCoroutine(loginUser("yyyyy", "5555"));
+        
+        //StartCoroutine(loginUser("yyyyy", "5555"));
     }
     public IEnumerator loginUser(String name, String pass, System.Action<int> callback = null)
     {
@@ -158,7 +159,7 @@ public class DataManager : MonoBehaviour
     public IEnumerator GetOrderDetail(int id)
     {
         WWWForm form = new WWWForm();
-        form.AddField("id", user.UserID);
+        form.AddField("id", id);
 
         using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/Readly_Pj/GetBookFromOrder.php", form))
         {
@@ -197,7 +198,7 @@ public class DataManager : MonoBehaviour
                                 string v = detail[i].Remove(detail[i].Length - 1, 1);
                                 detail[i] = v;
                                 string[] detail2 = detail[i].Split("-");
-                                orders[id].setBookOrder(int.Parse(detail2[1]), int.Parse(detail2[2]));
+                                orders[id].setBookOrder(int.Parse(detail2[0]), int.Parse(detail2[1]));
                             }
                                 
                         }

@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class UserRegistor : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class UserRegistor : MonoBehaviour
     
     [SerializeField]
     private DataManager dataManager;
+    public int sceneHome;
 
     private void Awake()
     {
@@ -32,7 +34,7 @@ public class UserRegistor : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(nameInput.text))
         {
-            if(passwordInput.text.Length < 8)
+            if(passwordInput.text.Length >= 8)
             {
                 if (emailInput.text.Contains("@")){
                     StartCoroutine(Registor(ReturnValue =>
@@ -63,7 +65,7 @@ public class UserRegistor : MonoBehaviour
                 if(returnValue == 1)
                 {
                     print(DataManager.user.ToString()+" Wow");
-                    Application.LoadLevel(1);
+                    SceneManager.LoadScene(sceneHome);
                 }
                 else
                 {
