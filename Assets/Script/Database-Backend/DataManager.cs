@@ -25,10 +25,11 @@ public class DataManager : MonoBehaviour
             }
 
             DontDestroyOnLoad(this.gameObject);
+            StartCoroutine(GetNormalData());
     }
     private void Start()
     {
-        StartCoroutine(GetNormalData());
+        
         //StartCoroutine(loginUser("yyyyy", "5555"));
     }
     public IEnumerator loginUser(String name, String pass, System.Action<int> callback = null)
@@ -197,7 +198,7 @@ public class DataManager : MonoBehaviour
                                 string v = detail[i].Remove(detail[i].Length - 1, 1);
                                 detail[i] = v;
                                 string[] detail2 = detail[i].Split("-");
-                                orders[id].setBookOrder(int.Parse(detail2[1]), int.Parse(detail2[2]));
+                                orders[id].setBookOrder(int.Parse(detail2[0]), int.Parse(detail2[1]));
                             }
                                 
                         }

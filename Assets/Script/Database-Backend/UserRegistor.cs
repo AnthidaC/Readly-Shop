@@ -23,6 +23,7 @@ public class UserRegistor : MonoBehaviour
     
     [SerializeField]
     private DataManager dataManager;
+    public int sceneHome;
 
     private void Awake()
     {
@@ -64,7 +65,7 @@ public class UserRegistor : MonoBehaviour
                 if(returnValue == 1)
                 {
                     print(DataManager.user.ToString()+" Wow");
-                    SceneManager.LoadScene(1);
+                    SceneManager.LoadScene(sceneHome);
                 }
                 else
                 {
