@@ -13,6 +13,7 @@ public class DataManager : MonoBehaviour
     [SerializeField]public static Dictionary<int,Book> book = new Dictionary<int,Book>();//bookid,book
     public static Dictionary<int,Order> orders = new Dictionary<int,Order>();
     public static Cart userCart;
+    public maneger pageOrder;
     //public static List<> 
 
     private void Awake()
@@ -154,6 +155,14 @@ public class DataManager : MonoBehaviour
                 }
             }
         }
+        pageOrder.loadingBook();
+        /*StartCoroutine(GetOrderData(value =>
+        {
+            if (value == 1)
+            {
+                pageOrder.loadingOrder();
+            }
+        }));*/
         print("this is status book 1 :" + book[1].Status);
     }
     public IEnumerator GetOrderDetail(int id)

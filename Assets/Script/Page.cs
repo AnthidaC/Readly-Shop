@@ -9,10 +9,10 @@ public class BookStore : MonoBehaviour
 
     private void Start()
     {
-        // แสดงหมวดหมู่เริ่มต้นเมื่อเริ่มเกม
+        
         if (bookCategories.Count > 0)
         {
-            OnCategoryChanged(categoryDropdown.value); // แสดงหมวดหมู่เริ่มต้น
+            OnCategoryChanged(categoryDropdown.value); 
         }
     }
 
@@ -22,14 +22,9 @@ public class BookStore : MonoBehaviour
         {
             category.SetActive(false);
         }
-        if(index == 0)
-        {
-            bookCategories[0].SetActive(true);
-        }
-        if (index == 1)
-        {
-            bookCategories[1].SetActive(true);
-            
-        }
+       
+            bookCategories[index].SetActive(true);
+        
+       
     }
 }

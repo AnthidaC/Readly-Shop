@@ -6,7 +6,7 @@ public class SearchBook : MonoBehaviour
 {
     public Transform Booklist;
     public TMP_InputField ser;
-    public TMP_Dropdown type;
+  
 
     // Update is called once per frame
     public void search()
@@ -14,7 +14,7 @@ public class SearchBook : MonoBehaviour
         int l = 0;
         for (int i = 0; i < Booklist.childCount; i++)
         {
-            if (string.IsNullOrEmpty(ser.text)&& type.value == 0)
+            if (string.IsNullOrEmpty(ser.text))
             {
                 Booklist.GetChild(i).gameObject.SetActive(true);
             }
@@ -26,7 +26,7 @@ public class SearchBook : MonoBehaviour
                     Booklist.GetComponent<RectTransform>().sizeDelta = new Vector2(1925, 680);
                 }
                 GameObject g = Booklist.GetChild(i).gameObject;
-                if (g.GetComponent<book>().b.ToString().Contains(ser.text) &&(((typeBook)(type.value - 1)).ToString() == g.GetComponent<book>().b.TypeBook || type.value == 0))
+                if (g.GetComponent<book>().b.ToString().Contains(ser.text))
                 {
                     g.SetActive(true);
                     l++;
