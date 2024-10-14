@@ -20965,8 +20965,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter text...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2a35af7f1a563274f94b948cf0bbc41f, type: 2}
-  m_sharedMaterial: {fileID: -1235792928796366964, guid: 2a35af7f1a563274f94b948cf0bbc41f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 10d3c14c3089089409c92ab5cbbf41a9, type: 2}
+  m_sharedMaterial: {fileID: 5317641784131646392, guid: 10d3c14c3089089409c92ab5cbbf41a9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
