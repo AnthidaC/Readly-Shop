@@ -7,14 +7,6 @@ public class BookStore : MonoBehaviour
     public TMP_Dropdown categoryDropdown;
     public List<GameObject> bookCategories = new List<GameObject>();
 
-    private void Start()
-    {
-        
-        if (bookCategories.Count > 0)
-        {
-            OnCategoryChanged(categoryDropdown.value); 
-        }
-    }
 
     public void OnCategoryChanged(int index)
     {
