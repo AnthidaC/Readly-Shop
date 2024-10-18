@@ -4,7 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-public class book : MonoBehaviour
+public class book_show : MonoBehaviour
 {
     public Book b;
     public TMP_Text price;
@@ -20,7 +20,7 @@ public class book : MonoBehaviour
     }
     public void detail()
     {
-        maneger pM = FindFirstObjectByType<maneger>();
+        maneger_show pM = FindFirstObjectByType<maneger_show>();
         pM.ShowBookDetail(b, this.gameObject);
 
     }

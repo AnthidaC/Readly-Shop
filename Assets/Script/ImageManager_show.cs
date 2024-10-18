@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class ImageManager : MonoBehaviour
+public class ImageManager_show: MonoBehaviour
 {
    
         public Texture2D img = null;

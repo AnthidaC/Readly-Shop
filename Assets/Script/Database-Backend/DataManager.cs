@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class DataManager : MonoBehaviour
     [SerializeField]public static Dictionary<int,Book> book = new Dictionary<int,Book>();//bookid,book
     public static Dictionary<int,Order> orders = new Dictionary<int,Order>();
     public static Cart userCart;
-    public maneger pageOrder;
+    public maneger_show pageOrder;
     //public static List<> 
 
     private void Awake()
@@ -123,7 +124,8 @@ public class DataManager : MonoBehaviour
             books[i]=books[i].Remove(0,1);
             string v = books[i].Remove(books[i].Length - 1, 1);
             books[i] = v;
-           string[] detail = books[i].Split("-");
+            string[] detail = books[i].Split("-");
+            print(books[i]);
             WWWForm form = new WWWForm();
             book.Add(int.Parse(detail[0]), new Book(detail[1], int.Parse(detail[0]), int.Parse(detail[5]), detail[8], detail[4], detail[2], int.Parse(detail[6]), detail[3], detail[7]));
             form.AddField("bookID",detail[0]) ;
@@ -156,6 +158,7 @@ public class DataManager : MonoBehaviour
             }
         }
         pageOrder.loadingBook();
+ 
         /*StartCoroutine(GetOrderData(value =>
         {
             if (value == 1)
@@ -163,7 +166,7 @@ public class DataManager : MonoBehaviour
                 pageOrder.loadingOrder();
             }
         }));*/
-        print("this is status book 1 :" + book[1].Status);
+        //print("this is status book 1 :" + book[1].Status);
     }
     public IEnumerator GetOrderDetail(int id)
     {

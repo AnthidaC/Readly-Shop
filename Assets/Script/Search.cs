@@ -26,7 +26,7 @@ public class SearchBook : MonoBehaviour
                     Booklist.GetComponent<RectTransform>().sizeDelta = new Vector2(1925, 680);
                 }
                 GameObject g = Booklist.GetChild(i).gameObject;
-                if (g.GetComponent<book>().b.ToString().Contains(ser.text))
+                if (g.GetComponent<book_show>().b.ToString().Contains(ser.text))
                 {
                     g.SetActive(true);
                     l++;

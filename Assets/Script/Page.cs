@@ -2,7 +2,7 @@
 using UnityEngine;
 using TMPro;
 
-public class BookStore : MonoBehaviour
+public class Page : MonoBehaviour
 {
     public TMP_Dropdown categoryDropdown;
     public List<GameObject> bookCategories = new List<GameObject>();
