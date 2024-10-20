@@ -15,6 +15,7 @@ public class DataManager : MonoBehaviour
     public static Dictionary<int,Order> orders = new Dictionary<int,Order>();
     public static Cart userCart;
     public maneger_show pageOrder;
+    
     //public static List<> 
 
     private void Awake()
@@ -158,6 +159,7 @@ public class DataManager : MonoBehaviour
             }
         }
         pageOrder.loadingBook();
+        //Home.loadingHome();
  
         /*StartCoroutine(GetOrderData(value =>
         {
