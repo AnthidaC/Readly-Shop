@@ -27,13 +27,13 @@ public class maneger_show : MonoBehaviour
     [Header("Homepage")]
     public GameObject NewPrefab;
     public Transform newlist;
-
+    public TMP_Text newprice;
     public GameObject bestPrefab;
     public Transform bestlist;
-
+    
     public GameObject recomPrefab;
     public Transform recomlist;
-
+   
     public GameObject homeDetailPage;
     public Image homeimg;
     private int countbookNew =0;
@@ -52,7 +52,7 @@ public class maneger_show : MonoBehaviour
     
     public void loadingBook()
     {
-        List<Book> usedBooks = new List<Book>();
+       
         string selectedType = bookTypeDropdown.options[bookTypeDropdown.value].text;
         countbookNew = 0;
         countbookbest = 0;
@@ -66,6 +66,10 @@ public class maneger_show : MonoBehaviour
         while (newlist.childCount > 0)
         {
             DestroyImmediate(newlist.GetChild(0).gameObject);
+        }
+        while (bestlist.childCount > 0)
+        {
+            DestroyImmediate(bestlist.GetChild(0).gameObject);
         }
         while (recomlist.childCount > 0)
         {
@@ -82,7 +86,7 @@ public class maneger_show : MonoBehaviour
                 clone.GetComponent<book_show>().Show();
             }
 
-           else if(bo.Stock>10&& !usedBooks.Contains(bo))
+           else if(bo.Stock>10)
             {
                 if (countbookNew < 7)
                 {
@@ -92,12 +96,12 @@ public class maneger_show : MonoBehaviour
                     clone.GetComponent<Home_show>().b1 = bo;
                     clone.GetComponent<Home_show>().Show_home();
                     countbookNew++;
-                    usedBooks.Add(bo);
+                    
                 }
             }
-            else if (bo.Stock < 10 && bo.Stock != 0 && !usedBooks.Contains(bo))
+            else if (bo.Stock < 10 && bo.Stock != 0 )
             {
-                if (countbookbest < 6)
+                if (countbookbest < 7)
                 {
                     GameObject clone = Instantiate(bestPrefab);
                     clone.transform.parent = bestlist;
@@ -105,38 +109,25 @@ public class maneger_show : MonoBehaviour
                     clone.GetComponent<Home_show>().b1 = bo;
                     clone.GetComponent<Home_show>().Show_home();
                     countbookbest++;
-                    usedBooks.Add(bo);
+                    
                 }
             }
-            else if(!usedBooks.Contains(bo)) 
+            else 
             {
-                if (countbookre < 6)
+                if (countbookre < 7)
                 {
-                    int i = 0;
-                    while (i < 4)
+                   
+                    if (bo.TypeBookInt <= 5)
                     {
-                        if (bo.TypeBookInt == i && countbookre < 1)
-                        {
                             GameObject clone = Instantiate(recomPrefab);
                             clone.transform.parent = recomlist;
                             clone.GetComponent<RectTransform>().sizeDelta = new Vector2(1000, 100);
                             clone.GetComponent<Home_show>().b1 = bo;
                             clone.GetComponent<Home_show>().Show_home();
                             countbookre++;
-                            i++;
-                            usedBooks.Add(bo);
-                        }
+                           
                     }
-                    if(bo.TypeBookInt == 5 && countbookre < 2)
-                    {
-                        GameObject clone = Instantiate(recomPrefab);
-                        clone.transform.parent = recomlist;
-                        clone.GetComponent<RectTransform>().sizeDelta = new Vector2(1000, 100);
-                        clone.GetComponent<Home_show>().b1 = bo;
-                        clone.GetComponent<Home_show>().Show_home();
-                        countbookre++;
-                        usedBooks.Add(bo);
-                    }
+                    
                 }
             }
         }
@@ -159,11 +150,12 @@ public class maneger_show : MonoBehaviour
     }
     public void ShowHomeDetail(Book book, GameObject t)
     {
-        print("here");
+        
         homeDetailPage.SetActive(true);
         Texture2D myTexture2D = book.imgBook;
         if (myTexture2D != null) homeimg.sprite = Sprite.Create(myTexture2D, new Rect(0.0f, 0.0f, myTexture2D.width, myTexture2D.height), new Vector2(0.5f, 0.5f), 100.0f);
         else homeimg.sprite = null;
+        price.text = book.Price.ToString();
         bookObject = t;
     }
 

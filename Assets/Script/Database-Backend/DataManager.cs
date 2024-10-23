@@ -159,7 +159,7 @@ public class DataManager : MonoBehaviour
             }
         }
         pageOrder.loadingBook();
-        //Home.loadingHome();
+       
  
         /*StartCoroutine(GetOrderData(value =>
         {
