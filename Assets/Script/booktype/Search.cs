@@ -11,7 +11,7 @@ public class Search : MonoBehaviour
     public void search()
     {
         int l = 0;
-        string searchText = ser.text.Trim().ToLower(); // เปลี่ยนเป็น lower case เพื่อเปรียบเทียบง่ายขึ้น
+        string searchText = ser.text.Trim().ToLower(); 
         for (int i = 0; i < Booklist.childCount; i++)
         {
             GameObject g = Booklist.GetChild(i).gameObject;
