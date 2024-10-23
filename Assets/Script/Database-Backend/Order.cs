@@ -8,12 +8,13 @@ public enum orderStatus:int
     To_ship=0,
     complete=1
 }
+[System.Serializable]
 public class Order 
 {
     private int ordarID;
     private int userID;
     private string orderDetail;
-    private orderStatus status;
+    public orderStatus status;
     private int cartID;
 
     public Order(int ordarID, string orderDetail, int cartID, string status, int userID)
@@ -38,15 +39,6 @@ public class Order
             if (value == "Cancelled") status = orderStatus.Cancelled;
             else if (value == "To ship"||value== "To_ship") status = orderStatus.To_ship;
             else if (value == "complete") status = orderStatus.complete;
-        }
-    }
-    public int StatusInt
-    {
-        get => ((int)status);
-        set
-        {
-            status = (orderStatus)value;
-            
         }
     }
     public int UserID { get => userID; set => userID = value; }

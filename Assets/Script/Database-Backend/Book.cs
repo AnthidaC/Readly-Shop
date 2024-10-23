@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-public enum typeBook:int
+public enum typeBook
 {
     Self_help = 0,
     Children = 1,
@@ -54,32 +54,15 @@ public class Book
         }
        
     }
-    public int TypeBookInt
-    {
-        get { return (int)type; }
-        set
-        {
-            type = (typeBook)value;
-        }
-
-    }
     public string Status
     {
-        get { return status.ToString(); }
+        get { return ((int)status).ToString(); }
         set
         {
             if(value == "on shelf"||value == "on_shelf") status=statusBook.on_shelf;
             else if (value == "hide") status = statusBook.hide;
             else if (value == "Out of stock"||value== "Out_of_stock") status = statusBook.Out_of_stock;
         }
-    } public int StatusInt
-    {
-        get { return (int)status; }
-        set
-        {
-            status = (statusBook)value;
-        }
-
     }
 
     public string Publisher { get => publisher; set => publisher = value; }
@@ -94,6 +77,19 @@ public class Book
     {
         this.Name = name;
         this.Id = id;
+        this.Price = price;
+        this.Title = title;
+        this.Publisher = publisher;
+        this.Author = author;
+        this.Stock = stock;
+
+        this.TypeBook = type;
+        this.Status = status;
+    }
+
+    public Book(string name, int price, string title, string publisher, string author, int stock, string type, string status)
+    {
+        this.Name = name;
         this.Price = price;
         this.Title = title;
         this.Publisher = publisher;
@@ -124,5 +120,10 @@ public class Book
             Debug.Log("img can loadd again");
         }
 
+    }
+
+    public override string ToString()
+    {
+        return name + ' ' + id + ' ' + author + ' ' + publisher;
     }
 }
