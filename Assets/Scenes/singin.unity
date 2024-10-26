@@ -3623,7 +3623,7 @@ MonoBehaviour:
   passwordLogin: {fileID: 1209837800}
   LogInPage: {fileID: 1524912703}
   dataManager: {fileID: 0}
-  sceneHome: 1
+  sceneHome: 2
 --- !u!1 &1174122193
 GameObject:
   m_ObjectHideFlags: 0
