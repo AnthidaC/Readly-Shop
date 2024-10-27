@@ -54,6 +54,15 @@ public class Book
         }
        
     }
+    public int TypeBookInt
+    {
+        get { return (int)type; }
+        set
+        {
+            type = (typeBook)value;
+        }
+
+    }
     public string Status
     {
         get { return ((int)status).ToString(); }
@@ -68,7 +77,7 @@ public class Book
 
     public string Publisher { get => publisher; set => publisher = value; }
     public string Author { get => author; set => author = value; }
-    public int Stock { get => stock; set => stock = value; }
+    public int Stock { get => 5; set => stock = value; }
     public int Price { get => price; set => price = value; }
     public string Name { get => name; set => name = value; }
     public int Id { get => id; set => id = value; }

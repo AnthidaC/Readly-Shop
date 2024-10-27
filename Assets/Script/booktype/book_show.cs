@@ -24,4 +24,11 @@ public class book_show : MonoBehaviour
         pM.ShowBookDetail(b, this.gameObject);
 
     }
+
+    public void OnClick()
+    {
+        UILoaderDetail bookPage =FindFirstObjectByType<UILoaderDetail>();
+
+        bookPage.ShowBookDetail(b, this.gameObject);
+    }
 }
