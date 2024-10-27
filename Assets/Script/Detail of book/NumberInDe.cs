@@ -3,27 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Threading;
+using static Unity.Collections.AllocatorManager;
 
 public class NumberInDe : MonoBehaviour
 {
+    public Book bo;
     public TextMeshProUGUI numbertext;
     int count = 0;
-
-    public void ButtomPressIncrease()
+    int value = 0;
+  
+    public int ButtonPressIncrease
     {
-        count++;
-        numbertext.text = count + "";
+        get { return count; }
+        set
+        {
+            if (count < bo.Stock)
+            {
+
+                count++;
+                numbertext.text = count + "";
+            }
+            print(count);
+        }
     }
     
-    public void ButtomPressDecrease()
+    public int ButtonPressDecrease
     {
-        if (count > 0 )
+        get { return count; }
+        set
         {
-            count--;
-            numbertext.text = count + "";
+            if (count > 1)
+            {
+                count--;
+                numbertext.text = count + "";
+            }
+            print(count);
         }
-        
     }
-
 
 }

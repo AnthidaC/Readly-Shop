@@ -7,7 +7,6 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
-using static UnityEngine.Rendering.DebugUI;
 
 public class DataManager : MonoBehaviour
 {
@@ -16,9 +15,8 @@ public class DataManager : MonoBehaviour
     public static Dictionary<int,Order> orders = new Dictionary<int,Order>();
     public static Cart userCart;
     public maneger_show pageOrder;
-
+    public AddToCart addToCart;
     //public static List<> 
-    
 
     private void Awake()
     {
@@ -117,10 +115,7 @@ public class DataManager : MonoBehaviour
 
     IEnumerator GetBook(string tex)
     {
-      
-
-
-        tex =tex.Remove(0,1);
+        tex=tex.Remove(0,1);
         print(tex);
         print((tex.Length));
         tex=tex.Remove((tex.Length)-1,1);
@@ -162,11 +157,10 @@ public class DataManager : MonoBehaviour
 
                 }
             }
-            
         }
 
-        pageOrder.loadingBook();
- 
+
+        addToCart.CloneCart();
         /*StartCoroutine(GetOrderData(value =>
         {
             if (value == 1)

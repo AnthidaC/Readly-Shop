@@ -9,9 +9,11 @@ using System.Linq;
 using System;
 
 
-public class UILoaderCart : MonoBehaviour
+public class UILoaderDetail : MonoBehaviour
 {
+    [Header("DetailOfBook")]
     public GameObject bookDetailPage;
+    public GameObject Main;
     public Image bookimg;
     public TMP_Text bookName;
     public TMP_Text content;
@@ -31,6 +33,7 @@ public class UILoaderCart : MonoBehaviour
     public void ShowBookDetail(Book book, GameObject t)
     {
         bookDetailPage.SetActive(true);
+        Main.SetActive(false);
         Texture2D myTexture2D = book.imgBook;
         if (myTexture2D != null) bookimg.sprite = Sprite.Create(myTexture2D, new Rect(0.0f, 0.0f, myTexture2D.width, myTexture2D.height), new Vector2(0.5f, 0.5f), 100.0f);
         else bookimg.sprite = null;

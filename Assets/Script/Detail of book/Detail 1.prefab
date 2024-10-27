@@ -402,7 +402,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6383627553113268969}
-  - component: {fileID: 7706530359100603408}
+  - component: {fileID: 2361305011658503339}
   m_Layer: 5
   m_Name: Detail 1
   m_TagString: Untagged
@@ -432,7 +432,7 @@ RectTransform:
   m_AnchoredPosition: {x: -276.885, y: -68}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7706530359100603408
+--- !u!114 &2361305011658503339
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -441,17 +441,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3750079594423739525}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a81d2b9c1f826b4b906de6dae929d20, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f27c1178bd480e4fa37ac4f39705256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bookDetailPage: {fileID: 0}
-  bookimg: {fileID: 2819549515071049159}
-  bookName: {fileID: 2123274858312315854}
-  content: {fileID: 1525308424601876756}
+  b:
+    imgBook: {fileID: 0}
   price: {fileID: 0}
-  type: {fileID: 8034856261884779609}
-  Author: {fileID: 5472193977231294974}
-  Publisher: {fileID: 5199617695247506213}
+  nam: {fileID: 2123274858312315854}
+  image: {fileID: 2819549515071049159}
 --- !u!1 &4150586906637386813
 GameObject:
   m_ObjectHideFlags: 0
