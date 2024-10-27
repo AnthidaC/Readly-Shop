@@ -20,13 +20,15 @@ public class UserRegistor : MonoBehaviour
     public TMP_InputField Usernamelogin;
     public TMP_InputField passwordLogin;
     public GameObject LogInPage;
-    
+    public GameObject HomePage;
+
     [SerializeField]
     private DataManager dataManager;
 
     private void Awake()
     {
         dataManager = FindFirstObjectByType<DataManager>();
+        
     }
 
     public void RegistorSubmit()
@@ -40,8 +42,8 @@ public class UserRegistor : MonoBehaviour
                     {
                         if (ReturnValue == 1)
                         {
+                           SingInPage.SetActive(false);
                             successPage.SetActive(true);
-                            SingInPage.SetActive(false);
                         }
                     }));
                 }
@@ -64,7 +66,9 @@ public class UserRegistor : MonoBehaviour
                 if(returnValue == 1)
                 {
                     print(DataManager.user.ToString()+" Wow");
-                    SceneManager.LoadScene(1);
+                    LogInPage.SetActive(false);
+                    HomePage.SetActive(true);
+                    //SceneManager.LoadScene(1);
                 }
                 else
                 {

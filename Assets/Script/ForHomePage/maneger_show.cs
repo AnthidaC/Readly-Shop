@@ -23,6 +23,7 @@ public class maneger_show : MonoBehaviour
     public TMP_Text price;
     public TMP_Dropdown bookTypeDropdown;
     private GameObject bookObject;
+   
 
     [Header("Homepage")]
     public GameObject NewPrefab;
@@ -33,7 +34,7 @@ public class maneger_show : MonoBehaviour
     
     public GameObject recomPrefab;
     public Transform recomlist;
-   
+  
     public GameObject homeDetailPage;
     public Image homeimg;
     private int countbookNew =0;
@@ -41,12 +42,15 @@ public class maneger_show : MonoBehaviour
     private int countbookre = 0;
     private ImageManager_show imgMana;
     private DataManager dataMana;
+
+    [Header("Shopping page")]
+    public TMP_Text title;
+    public Image  img;
+    public TMP_Text Bookprice;
+
     private void Awake()
-    {
-        imgMana = FindFirstObjectByType<ImageManager_show>();
-        dataMana = FindFirstObjectByType<DataManager>();
+    {     
         bookTypeDropdown.onValueChanged.AddListener(delegate { loadingBook(); });
-        
     }
   
     
@@ -77,6 +81,7 @@ public class maneger_show : MonoBehaviour
         }
         foreach (Book bo in DataManager.book.Values)
         {
+            
             if (bo.TypeBook == selectedType)
             {
                 GameObject clone = Instantiate(BookPrefab);
@@ -117,7 +122,7 @@ public class maneger_show : MonoBehaviour
                 if (countbookre < 7)
                 {
                    
-                    if (bo.TypeBookInt <= 5)
+                    if (bo.TypeBook == "Horror"|| bo.TypeBook == "Self help" || bo.TypeBook == "Business" || bo.TypeBook == "Non_fiction"|| bo.TypeBook == "Novel" || bo.TypeBook == "Children")
                     {
                             GameObject clone = Instantiate(recomPrefab);
                             clone.transform.parent = recomlist;
@@ -156,6 +161,17 @@ public class maneger_show : MonoBehaviour
         if (myTexture2D != null) homeimg.sprite = Sprite.Create(myTexture2D, new Rect(0.0f, 0.0f, myTexture2D.width, myTexture2D.height), new Vector2(0.5f, 0.5f), 100.0f);
         else homeimg.sprite = null;
         price.text = book.Price.ToString();
+        bookObject = t;
+    }
+    public void SHoppingpageDetail(Book book, GameObject t)
+    {
+
+       
+        Texture2D myTexture2D = book.imgBook;
+        if (myTexture2D != null) img.sprite = Sprite.Create(myTexture2D, new Rect(0.0f, 0.0f, myTexture2D.width, myTexture2D.height), new Vector2(0.5f, 0.5f), 100.0f);
+        else img.sprite = null;
+        price.text = book.Price.ToString();
+        title.text = book.Name.ToString();
         bookObject = t;
     }
 
