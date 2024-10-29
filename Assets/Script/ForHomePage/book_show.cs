@@ -24,5 +24,10 @@ public class book_show : MonoBehaviour
         maneger_show P = new maneger_show();
          P.ShowBookDetail(b,this.gameObject);
     }
+    public void detailshop()
+    {
+        UILoaderDetail pB = FindFirstObjectByType<UILoaderDetail>();
+        pB.ShowBookDetail(b);
+    }
 
 }

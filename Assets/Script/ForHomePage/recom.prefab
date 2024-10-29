@@ -95,6 +95,7 @@ MonoBehaviour:
     imgBook: {fileID: 0}
   image: {fileID: 354088825429789543}
   price: {fileID: 5197700578460283913}
+  name: {fileID: 0}
 --- !u!114 &727695326373158181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +139,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1580110497650358959}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2576767166615218138}
+        m_TargetAssemblyTypeName: Home_show, Assembly-CSharp
+        m_MethodName: detail
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1043379607511806363
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +271,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 354088825429789543}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2576767166615218138}
+        m_TargetAssemblyTypeName: Home_show, Assembly-CSharp
+        m_MethodName: detail
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3178408288911605691
 GameObject:
   m_ObjectHideFlags: 0

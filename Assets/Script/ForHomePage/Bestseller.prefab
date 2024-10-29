@@ -381,6 +381,7 @@ MonoBehaviour:
     imgBook: {fileID: 0}
   image: {fileID: 5889332225346962753}
   price: {fileID: 5018996878929799179}
+  name: {fileID: 0}
 --- !u!1 &8611760841591489876
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,4 +635,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5889332225346962753}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 183379497448055630}
+        m_TargetAssemblyTypeName: Home_show, Assembly-CSharp
+        m_MethodName: detail
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

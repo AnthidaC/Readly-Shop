@@ -95,6 +95,7 @@ MonoBehaviour:
     imgBook: {fileID: 0}
   image: {fileID: 4600167548358340063}
   price: {fileID: 5604780359105737142}
+  name: {fileID: 0}
 --- !u!1 &3852115748464983020
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +296,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9525311c94861a243acfc8c318935f78, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e634ce268934e7e41918a2de96be2c23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -631,13 +632,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 4600167548358340063}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Bookclick, Assembly-CSharp
-        m_MethodName: Onclick
+      - m_Target: {fileID: 81680676460564343}
+        m_TargetAssemblyTypeName: Home_show, Assembly-CSharp
+        m_MethodName: detail
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

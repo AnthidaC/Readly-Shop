@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -10,6 +10,7 @@ using System;
 using Unity.VisualScripting;
 using System.ComponentModel.Design;
 using System.Reflection;
+using UnityEditor.PackageManager;
 
 public class maneger_show : MonoBehaviour
 {
@@ -37,20 +38,32 @@ public class maneger_show : MonoBehaviour
   
     public GameObject homeDetailPage;
     public Image homeimg;
-    private int countbookNew =0;
-    private int countbookbest= 0;
-    private int countbookre = 0;
+    private int countbookNew;
+    private int countbookbest;
+    private int countbookre ;
     private ImageManager_show imgMana;
     private DataManager dataMana;
 
-    [Header("Shopping page")]
-    public TMP_Text title;
-    public Image  img;
-    public TMP_Text Bookprice;
-
+    
     private void Awake()
     {     
         bookTypeDropdown.onValueChanged.AddListener(delegate { loadingBook(); });
+        countbookNew = 0;
+        countbookbest = 0;
+        countbookre = 0;
+       
+        while (newlist.childCount > 0)
+        {
+            DestroyImmediate(newlist.GetChild(0).gameObject);
+        }
+        while (bestlist.childCount > 0)
+        {
+            DestroyImmediate(bestlist.GetChild(0).gameObject);
+        }
+        while (recomlist.childCount > 0)
+        {
+            DestroyImmediate(recomlist.GetChild(0).gameObject);
+        }
     }
   
     
@@ -58,11 +71,14 @@ public class maneger_show : MonoBehaviour
     {
        
         string selectedType = bookTypeDropdown.options[bookTypeDropdown.value].text;
-        countbookNew = 0;
-        countbookbest = 0;
-        countbookre = 0;
 
         while (Booklist.childCount > 0)
+        {
+            DestroyImmediate(Booklist.GetChild(0).gameObject);
+
+        }
+        
+        /*while (Booklist.childCount > 0)
         {
             DestroyImmediate(Booklist.GetChild(0).gameObject);
            
@@ -78,7 +94,7 @@ public class maneger_show : MonoBehaviour
         while (recomlist.childCount > 0)
         {
             DestroyImmediate(recomlist.GetChild(0).gameObject);
-        }
+        }*/
         foreach (Book bo in DataManager.book.Values)
         {
             
@@ -90,21 +106,7 @@ public class maneger_show : MonoBehaviour
                 clone.GetComponent<book_show>().b = bo;
                 clone.GetComponent<book_show>().Show();
             }
-
-           else if(bo.Stock>10)
-            {
-                if (countbookNew < 7)
-                {
-                    GameObject clone = Instantiate(NewPrefab);
-                    clone.transform.parent = newlist;
-                    clone.GetComponent<RectTransform>().sizeDelta = new Vector2(1000, 100);
-                    clone.GetComponent<Home_show>().b1 = bo;
-                    clone.GetComponent<Home_show>().Show_home();
-                    countbookNew++;
-                    
-                }
-            }
-            else if (bo.Stock < 10 && bo.Stock != 0 )
+            else if (bo.Stock < 10 && bo.Stock != 0)
             {
                 if (countbookbest < 7)
                 {
@@ -114,6 +116,19 @@ public class maneger_show : MonoBehaviour
                     clone.GetComponent<Home_show>().b1 = bo;
                     clone.GetComponent<Home_show>().Show_home();
                     countbookbest++;
+
+                }
+            }
+            else if(bo.Stock > 10)
+            {
+                if (countbookNew < 7)
+                {
+                    GameObject clone = Instantiate(NewPrefab);
+                    clone.transform.parent = newlist;
+                    clone.GetComponent<RectTransform>().sizeDelta = new Vector2(1000, 100);
+                    clone.GetComponent<Home_show>().b1 = bo;
+                    clone.GetComponent<Home_show>().Show_home();
+                    countbookNew++;
                     
                 }
             }
@@ -135,6 +150,8 @@ public class maneger_show : MonoBehaviour
                     
                 }
             }
+            
+
         }
         if (DataManager.book.Count > 6)
         {
@@ -163,17 +180,7 @@ public class maneger_show : MonoBehaviour
         price.text = book.Price.ToString();
         bookObject = t;
     }
-    public void SHoppingpageDetail(Book book, GameObject t)
-    {
-
-       
-        Texture2D myTexture2D = book.imgBook;
-        if (myTexture2D != null) img.sprite = Sprite.Create(myTexture2D, new Rect(0.0f, 0.0f, myTexture2D.width, myTexture2D.height), new Vector2(0.5f, 0.5f), 100.0f);
-        else img.sprite = null;
-        price.text = book.Price.ToString();
-        title.text = book.Name.ToString();
-        bookObject = t;
-    }
+   
 
 
 }
