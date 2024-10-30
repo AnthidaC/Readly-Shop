@@ -1186,7 +1186,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1104024504}
+      - m_Target: {fileID: 1104024505}
         m_TargetAssemblyTypeName: UserRegistor, Assembly-CSharp
         m_MethodName: LogIn
         m_Mode: 1
@@ -3506,6 +3506,8 @@ GameObject:
   - component: {fileID: 1104024501}
   - component: {fileID: 1104024500}
   - component: {fileID: 1104024504}
+  - component: {fileID: 1104024506}
+  - component: {fileID: 1104024505}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3616,14 +3618,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameInput: {fileID: 1841153302}
   passwordInput: {fileID: 706126970}
+--- !u!114 &1104024505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104024499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2c3e9cbfe3edf45ae2e7e8fb7aeaf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameInput: {fileID: 1841153302}
+  passwordInput: {fileID: 706126970}
   emailInput: {fileID: 629431047}
   SingInPage: {fileID: 961767998}
-  successPage: {fileID: 980231189}
+  successPage:
+    m_Handle: 0
   Usernamelogin: {fileID: 762339654}
   passwordLogin: {fileID: 1209837800}
   LogInPage: {fileID: 1524912703}
   dataManager: {fileID: 0}
-  sceneHome: 2
+--- !u!114 &1104024506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104024499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e19371e6fec15548a0e1ac88a549775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1174122193
 GameObject:
   m_ObjectHideFlags: 0
@@ -4082,7 +4110,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321929385}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19fc2c026f7ec7647b678af5493913b8, type: 3}
   m_Name: 

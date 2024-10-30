@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 
 public class SignIn : MonoBehaviour
 {
+   
     public TMP_InputField nameInput;
     public TMP_InputField passwordInput;
 
@@ -33,7 +34,9 @@ public class SignIn : MonoBehaviour
                 Debug.Log(www.downloadHandler.text);
             }
         }
+        
     }
+   
     // Start is called before the first frame update
 
 }

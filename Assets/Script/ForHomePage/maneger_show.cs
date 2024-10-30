@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -10,6 +10,7 @@ using System;
 using Unity.VisualScripting;
 using System.ComponentModel.Design;
 using System.Reflection;
+using UnityEditor.PackageManager;
 
 public class maneger_show : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class maneger_show : MonoBehaviour
     public TMP_Text price;
     public TMP_Dropdown bookTypeDropdown;
     private GameObject bookObject;
+   
 
     [Header("Homepage")]
     public GameObject NewPrefab;
@@ -33,20 +35,35 @@ public class maneger_show : MonoBehaviour
     
     public GameObject recomPrefab;
     public Transform recomlist;
-   
+  
     public GameObject homeDetailPage;
     public Image homeimg;
-    private int countbookNew =0;
-    private int countbookbest= 0;
-    private int countbookre = 0;
+    private int countbookNew;
+    private int countbookbest;
+    private int countbookre ;
     private ImageManager_show imgMana;
     private DataManager dataMana;
+
+    
     private void Awake()
-    {
-        imgMana = FindFirstObjectByType<ImageManager_show>();
-        dataMana = FindFirstObjectByType<DataManager>();
+    {     
         bookTypeDropdown.onValueChanged.AddListener(delegate { loadingBook(); });
-        
+        countbookNew = 0;
+        countbookbest = 0;
+        countbookre = 0;
+       
+        while (newlist.childCount > 0)
+        {
+            DestroyImmediate(newlist.GetChild(0).gameObject);
+        }
+        while (bestlist.childCount > 0)
+        {
+            DestroyImmediate(bestlist.GetChild(0).gameObject);
+        }
+        while (recomlist.childCount > 0)
+        {
+            DestroyImmediate(recomlist.GetChild(0).gameObject);
+        }
     }
   
     
@@ -54,11 +71,14 @@ public class maneger_show : MonoBehaviour
     {
        
         string selectedType = bookTypeDropdown.options[bookTypeDropdown.value].text;
-        countbookNew = 0;
-        countbookbest = 0;
-        countbookre = 0;
 
         while (Booklist.childCount > 0)
+        {
+            DestroyImmediate(Booklist.GetChild(0).gameObject);
+
+        }
+        
+        /*while (Booklist.childCount > 0)
         {
             DestroyImmediate(Booklist.GetChild(0).gameObject);
            
@@ -74,9 +94,10 @@ public class maneger_show : MonoBehaviour
         while (recomlist.childCount > 0)
         {
             DestroyImmediate(recomlist.GetChild(0).gameObject);
-        }
+        }*/
         foreach (Book bo in DataManager.book.Values)
         {
+            
             if (bo.TypeBook == selectedType)
             {
                 GameObject clone = Instantiate(BookPrefab);
@@ -85,8 +106,20 @@ public class maneger_show : MonoBehaviour
                 clone.GetComponent<book_show>().b = bo;
                 clone.GetComponent<book_show>().Show();
             }
+            else if (bo.Stock < 10 && bo.Stock != 0)
+            {
+                if (countbookbest < 7)
+                {
+                    GameObject clone = Instantiate(bestPrefab);
+                    clone.transform.parent = bestlist;
+                    clone.GetComponent<RectTransform>().sizeDelta = new Vector2(1000, 100);
+                    clone.GetComponent<Home_show>().b1 = bo;
+                    clone.GetComponent<Home_show>().Show_home();
+                    countbookbest++;
 
-           else if(bo.Stock>10)
+                }
+            }
+            else if(bo.Stock > 10)
             {
                 if (countbookNew < 7)
                 {
@@ -99,25 +132,12 @@ public class maneger_show : MonoBehaviour
                     
                 }
             }
-            else if (bo.Stock < 10 && bo.Stock != 0 )
-            {
-                if (countbookbest < 7)
-                {
-                    GameObject clone = Instantiate(bestPrefab);
-                    clone.transform.parent = bestlist;
-                    clone.GetComponent<RectTransform>().sizeDelta = new Vector2(1000, 100);
-                    clone.GetComponent<Home_show>().b1 = bo;
-                    clone.GetComponent<Home_show>().Show_home();
-                    countbookbest++;
-                    
-                }
-            }
             else 
             {
                 if (countbookre < 7)
                 {
                    
-                    if (bo.TypeBookInt <= 5)
+                    if (bo.TypeBook == "Horror"|| bo.TypeBook == "Self help" || bo.TypeBook == "Business" || bo.TypeBook == "Non_fiction"|| bo.TypeBook == "Novel" || bo.TypeBook == "Children")
                     {
                             GameObject clone = Instantiate(recomPrefab);
                             clone.transform.parent = recomlist;
@@ -130,6 +150,8 @@ public class maneger_show : MonoBehaviour
                     
                 }
             }
+            
+
         }
         if (DataManager.book.Count > 6)
         {
@@ -158,6 +180,7 @@ public class maneger_show : MonoBehaviour
         price.text = book.Price.ToString();
         bookObject = t;
     }
+   
 
 
 }

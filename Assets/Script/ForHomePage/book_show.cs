@@ -18,17 +18,16 @@ public class book_show : MonoBehaviour
         Texture2D myTexture2D = b.imgBook;
         if (myTexture2D != null) image.sprite = Sprite.Create(myTexture2D, new Rect(0.0f, 0.0f, myTexture2D.width, myTexture2D.height), new Vector2(0.5f, 0.5f), 100.0f);
     }
-    public void detail()
+    
+   public void Detail()
     {
-        maneger_show pM = FindFirstObjectByType<maneger_show>();
-        pM.ShowBookDetail(b, this.gameObject);
-
+        maneger_show P = new maneger_show();
+         P.ShowBookDetail(b,this.gameObject);
+    }
+    public void detailshop()
+    {
+        UILoaderDetail pB = FindFirstObjectByType<UILoaderDetail>();
+        pB.ShowBookDetail(b);
     }
 
-    public void OnClick()
-    {
-        UILoaderDetail bookPage =FindFirstObjectByType<UILoaderDetail>();
-
-        bookPage.ShowBookDetail(b, this.gameObject);
-    }
 }
