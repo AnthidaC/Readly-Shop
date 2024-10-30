@@ -14,6 +14,8 @@ public class DetailOfCart : MonoBehaviour
     public TMP_Text type;
     public TMP_Text price;
 
+    public int amount = 0;
+
     public void Show()
     {
         title.text = book.Name;
@@ -26,11 +28,18 @@ public class DetailOfCart : MonoBehaviour
 
     public void detail()
     {
-        AddToCart pM = FindFirstObjectByType<AddToCart>();
+        ToCart pM = FindFirstObjectByType<ToCart>();
         pM.DetailOfBook(book, this.gameObject);
 
     }
 
+    public void add()
+    {
+        print("IN add");
+        ToCart pM = FindFirstObjectByType<ToCart>();
+        pM.AddBook(book,amount);
+
+    }
 
 }
 

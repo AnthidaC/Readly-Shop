@@ -44,6 +44,11 @@ public class UILoaderDetail : MonoBehaviour
         Publisher.text = book.Publisher;
         content.text = book.Title;
         bookObject = t;
+        print("thissssssssssssss "+t);
+        print("heyyyyyyy  " + book);
     }
 }
     
+
+
+

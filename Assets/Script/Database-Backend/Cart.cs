@@ -18,14 +18,14 @@ public class Cart
 
     public bool AddBookToCart(Book book,int amount)
     {
-        for (int i = 0; i < this.booksInCart.Count; i++)
-        {
-            if (booksInCart.ElementAt(i).Key.Id == book.Id)
+            for (int i = 0; i < this.booksInCart.Count; i++)
             {
-                Debug.Log("book is exist");
-                return true;
+                if (booksInCart.ElementAt(i).Key.Id == book.Id)
+                {
+                    Debug.Log("book is exist");
+                    return true;
+                }
             }
-        }
         booksInCart.Add(book, amount);
         return true;
     }

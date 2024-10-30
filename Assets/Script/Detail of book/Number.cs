@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using System.Threading;
+using UnityEngine;
 
-
-public class NumberInDe : MonoBehaviour
+public class Number : MonoBehaviour
 {
     public Book bo;
     public TextMeshProUGUI numbertext;
     int count = 1;
     int value = 1;
-  
+
     public int ButtonPressIncrease
     {
         get { return count; }
@@ -24,10 +21,10 @@ public class NumberInDe : MonoBehaviour
                 count++;
                 numbertext.text = count + "";
             }
-            
+            print(count);
         }
     }
-    
+
     public int ButtonPressDecrease
     {
         get { return count; }
@@ -41,5 +38,4 @@ public class NumberInDe : MonoBehaviour
             print(count);
         }
     }
-
 }

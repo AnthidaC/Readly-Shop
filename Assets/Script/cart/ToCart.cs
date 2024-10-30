@@ -7,7 +7,7 @@ using TMPro;
 using static Unity.Collections.AllocatorManager;
 using System.Linq;
 using System;
-public class AddToCart : MonoBehaviour
+public class ToCart : MonoBehaviour
 {
     [Header("DetailOfBook")]
     public GameObject bookDetailPage;
@@ -18,10 +18,10 @@ public class AddToCart : MonoBehaviour
     private GameObject bookObject;
 
     [Header("CountAdd")]
-    public NumberInDe NumOfCart ;
+    public NumberInDe NumIn;
     public TextMeshProUGUI numbertext;
-    int sum = 0;
-    int n = 0;
+    public int AllOrder = 0;
+    public int n = 0;
 
     [Header("CloneCart")]
     public Book c;
@@ -30,11 +30,24 @@ public class AddToCart : MonoBehaviour
     public Transform newlist;
     private int countbook = 0;
 
+    [Header("Addtocart")]
+    public Book id;
+    private int cartID;
+    private Dictionary<Book, int> booksInCart = new Dictionary<Book, int>();
+
+    public int CartID { get => cartID; set => cartID = value; }
+    public Dictionary<Book, int> BooksInCart { get => booksInCart; set => booksInCart = value; }
+
+    public ToCart(int cartID)
+    {
+        this.CartID = cartID;
+    }
+
     public void ButtonPressAdd ()
     {
-        n = NumOfCart.ButtonPressIncrease;
-        sum = sum + n;
-        numbertext.text = sum + "";
+        n = NumIn.ButtonPressIncrease;
+        AllOrder = AllOrder + n;
+        numbertext.text = AllOrder + "";
     }
 
     public void CloneCart ()
@@ -73,6 +86,51 @@ public class AddToCart : MonoBehaviour
             price.text = book.Price.ToString();
             type.text = book.TypeBook;
             bookObject = t;
+    }
+
+    public bool AddBook(Book book, int amount)
+    {
+        print("In AddBook");
+        print(book);
+            for (int i = 0; i < this.booksInCart.Count; i++)
+            {
+                if (booksInCart.ElementAt(i).Key.Id == book.Id)
+                {
+                    print("Book in cart");
+                    return true;
+                }
+            }
+        booksInCart.Add(book, amount);
+        CheckAmountBookFromCart(id.Id, amount);
+        return true;
+    }
+
+    public void CheckAmountBookFromCart(int bookId, int amount)
+    {
+        print("Check AmountBook");
+        for (int i = 0; i < this.booksInCart.Count; i++)
+        {
+            if (booksInCart.ElementAt(i).Key.Id == bookId)
+            {
+                booksInCart[(booksInCart.ElementAt(i).Key)] = amount;
+            }
+        }
+    }
+
+    public void RemoveBook(int bookID)
+    {
+        print("In Remove");
+        for (int i = 0; i < this.booksInCart.Count; i++)
+        {
+            if (booksInCart.ElementAt(i).Key.Id == bookID)
+            {
+                booksInCart.Remove(booksInCart.ElementAt(i).Key);
+            }
+        }
+    }
+    public void Clear()
+    {
+        this.booksInCart = null;
     }
 
 
