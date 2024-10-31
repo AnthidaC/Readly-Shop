@@ -35,7 +35,10 @@ public class maneger_show : MonoBehaviour
     
     public GameObject recomPrefab;
     public Transform recomlist;
-  
+
+    [Header("Foe Seach")]
+    public GameObject AllPrefab;
+    public Transform Alllist;
     public GameObject homeDetailPage;
     public Image homeimg;
     private int countbookNew;
@@ -64,6 +67,10 @@ public class maneger_show : MonoBehaviour
         {
             DestroyImmediate(recomlist.GetChild(0).gameObject);
         }
+        while (Alllist.childCount > 0)
+        {
+            DestroyImmediate(Alllist.GetChild(0).gameObject);
+        }
     }
   
     
@@ -77,7 +84,7 @@ public class maneger_show : MonoBehaviour
             DestroyImmediate(Booklist.GetChild(0).gameObject);
 
         }
-        
+
         /*while (Booklist.childCount > 0)
         {
             DestroyImmediate(Booklist.GetChild(0).gameObject);
@@ -96,6 +103,18 @@ public class maneger_show : MonoBehaviour
             DestroyImmediate(recomlist.GetChild(0).gameObject);
         }*/
         foreach (Book bo in DataManager.book.Values)
+        {
+
+           
+                GameObject clone = Instantiate(AllPrefab);
+                clone.transform.parent = Alllist;
+                clone.GetComponent<RectTransform>().sizeDelta = new Vector2(1000, 100);
+                clone.GetComponent<Home_show>().b1 = bo;
+                clone.GetComponent<Home_show>().Show_home();
+                clone.SetActive(false);
+          
+        }
+            foreach (Book bo in DataManager.book.Values)
         {
             
             if (bo.TypeBook == selectedType)

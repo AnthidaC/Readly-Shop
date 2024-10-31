@@ -14,7 +14,12 @@ public class Home_show : MonoBehaviour
 
     public void Show_home()
     {
-        price.text = b1.Price.ToString() + " ฿"; 
+        if (price != null)
+            price.text = b1.Price.ToString() + " ฿";
+        if(name != null) { 
+        name.text = b1.Name;
+        }
+        
         Texture2D myTexture2D = b1.imgBook;
         if (myTexture2D != null) image.sprite = Sprite.Create(myTexture2D, new Rect(0.0f, 0.0f, myTexture2D.width, myTexture2D.height), new Vector2(0.5f, 0.5f), 100.0f);
     }
