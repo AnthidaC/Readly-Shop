@@ -122,7 +122,7 @@ public class DataManager : MonoBehaviour
             books[i]=books[i].Remove(0,1);
             string v = books[i].Remove(books[i].Length - 1, 1);
             books[i] = v;
-           string[] detail = books[i].Split("-");
+            string[] detail = books[i].Split("-");
             WWWForm form = new WWWForm();
             book.Add(int.Parse(detail[0]), new Book(detail[1], int.Parse(detail[0]), int.Parse(detail[5]), detail[8], detail[4], detail[2], int.Parse(detail[6]), detail[3], detail[7]));
             form.AddField("bookID",detail[0]) ;
@@ -469,53 +469,54 @@ public class DataManager : MonoBehaviour
             }
         }
     }
-    public IEnumerator GetCartData()
-    {
-        WWWForm form = new WWWForm();
-        form.AddField("id", user.CastID);
-
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/Readly_Pj/GetCartData.php", form))
+        public IEnumerator GetCartData()
         {
-            yield return www.SendWebRequest();
+            WWWForm form = new WWWForm();
+            form.AddField("id", user.CastID);
 
-            if (www.isNetworkError || www.isHttpError)
+            using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/Readly_Pj/GetCartData.php", form))
             {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                string tex = www.downloadHandler.text;
-                if (tex != null)
+                yield return www.SendWebRequest();
+
+                if (www.isNetworkError || www.isHttpError)
                 {
-                    if (tex.Equals("0") || tex.Equals(" password  not correct") || tex.Equals("3: Name don't exists") || tex.Equals("1: Connect failed"))
+                    Debug.Log(www.error);
+                }
+                else
+                {
+                    string tex = www.downloadHandler.text;
+                    if (tex != null)
                     {
-                        print("Error get cart data or have null order data");
-                        yield return null;
-                    }
-                    else
-                    {
-                        tex = tex.Remove(0, 1);
-                        print(tex);
-                        print((tex.Length));
-                        tex = tex.Remove((tex.Length) - 1, 1);
-                        string[] order = tex.Split(',');
-                        for (int i = 0; i < order.Length; i++)
+                        if (tex.Equals("0") || tex.Equals(" password  not correct") || tex.Equals("3: Name don't exists") || tex.Equals("1: Connect failed"))
                         {
-                            order[i] = order[i].Remove(0, 1);
-                            string v = order[i].Remove(order[i].Length - 1, 1);
-                            order[i] = v;
-                            string[] detail = order[i].Split("-");
-                            userCart.AddBookToCart(book[int.Parse(detail[0])],int.Parse(detail[1]));
-       
+                            print("Error get cart data or have null order data");
+                            yield return null;
                         }
-                        print("get cart data ss");
+                        else
+                        {
+                            tex = tex.Remove(0, 1);
+                            print(tex);
+                            print((tex.Length));
+                            tex = tex.Remove((tex.Length) - 1, 1);
+                            string[] order = tex.Split(',');
+                            for (int i = 0; i < order.Length; i++)
+                            {
+                                order[i] = order[i].Remove(0, 1);
+                                string v = order[i].Remove(order[i].Length - 1, 1);
+                                order[i] = v;
+                                string[] detail = order[i].Split("-");
+                                print(order[i]);
+                                userCart.AddBookToCart(book[int.Parse(detail[0])],int.Parse(detail[1]));
+        
+                            }
+                            print("get cart data ss");
+                        }
+
                     }
 
                 }
-
             }
         }
-    }
 }
 
     
