@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
@@ -16,10 +13,19 @@ public class UserRegistor : MonoBehaviour
     public GameObject SingInPage;
     public GameObject successPage;
 
+    [Header("Sing In error")]
+    public GameObject passwordError;
+    public GameObject emailError;
+    public GameObject nameError;
+    public GameObject inputError;
+
     [Header("Log In page")]
     public TMP_InputField Usernamelogin;
     public TMP_InputField passwordLogin;
     public GameObject LogInPage;
+    public GameObject loginError;
+
+
     
     [SerializeField]
     private DataManager dataManager;
@@ -32,26 +38,36 @@ public class UserRegistor : MonoBehaviour
 
     public void RegistorSubmit()
     {
-        if (!string.IsNullOrEmpty(nameInput.text))
+        if (!string.IsNullOrEmpty(nameInput.text)&&!string.IsNullOrEmpty(emailInput.text))
         {
-            if(passwordInput.text.Length >= 8)
+            inputError.SetActive(false);
+            if (passwordInput.text.Length >= 8)
             {
+                passwordError.SetActive(false);
                 if (emailInput.text.Contains("@")){
+                    emailError.SetActive(false);
                     StartCoroutine(Registor(ReturnValue =>
                     {
                         if (ReturnValue == 1)
                         {
+                            nameError.SetActive(false);
                             successPage.SetActive(true);
                             SingInPage.SetActive(false);
+                        }
+                        else if(ReturnValue == -1) 
+                        {
+                            nameError.SetActive(true);
                         }
                     }));
                 }
                 else { 
-                    
+                    emailError.SetActive(true) ;
                 }
 
-            }
+            }else passwordError.SetActive(true) ;
+
         }
+        else inputError.SetActive(true) ;
 
         
     }
@@ -64,15 +80,17 @@ public class UserRegistor : MonoBehaviour
             {
                 if(returnValue == 1)
                 {
+                    loginError.SetActive(false);
                     print(DataManager.user.ToString()+" Wow");
                     SceneManager.LoadScene(sceneHome);
                 }
                 else
                 {
                     print("log in faile");
+                    loginError.SetActive(true);
                 }
             }));
-        }
+        }else loginError.SetActive(true) ;
     }
 
 
@@ -100,6 +118,10 @@ public class UserRegistor : MonoBehaviour
                     {
                         print("create user success");
                         if (callback != null) callback.Invoke(1);
+                    }
+                    else if(tex.Equals("3: Name already exists"))
+                    {
+                        if (callback != null) callback.Invoke(-1);
                     }
                     print(tex);
                 }
