@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,27 +10,29 @@ using UnityEngine.Networking;
 
 public class DataManager : MonoBehaviour
 {
-    public static User user=new User();
-    [SerializeField]public static Dictionary<int,Book> book = new Dictionary<int,Book>();//bookid,book
-    public static Dictionary<int,Order> orders = new Dictionary<int,Order>();
+    public static User user = new User();
+    [SerializeField] public static Dictionary<int, Book> book = new Dictionary<int, Book>();//bookid,book
+    public static Dictionary<int, Order> orders = new Dictionary<int, Order>();
     public static Cart userCart;
+    public maneger_show pageOrder;
+    public ToCart addToCart;
     //public static List<> 
 
     private void Awake()
     {
-            DataManager[] objs = FindObjectsOfType<DataManager>();
-            print("5555555 "+objs.Length);
-            if (objs.Length > 1)
-            {
-                Destroy(this.gameObject);
-            }
+        DataManager[] objs = FindObjectsOfType<DataManager>();
+        print("5555555 " + objs.Length);
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
 
-            DontDestroyOnLoad(this.gameObject);
-            StartCoroutine(GetNormalData());
+        DontDestroyOnLoad(this.gameObject);
+        StartCoroutine(GetNormalData());
     }
     private void Start()
     {
-        
+
         //StartCoroutine(loginUser("yyyyy", "5555"));
     }
     public IEnumerator loginUser(String name, String pass, System.Action<int> callback = null)
@@ -38,7 +41,7 @@ public class DataManager : MonoBehaviour
         form.AddField("name", name);
         form.AddField("password", pass);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/Readly_Pj/Login.php",form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/Readly_Pj/Login.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -68,13 +71,13 @@ public class DataManager : MonoBehaviour
                         user.Email = data[2];
                         user.CastID = int.Parse(data[3]);
                         userCart = new Cart(user.CastID);
-                        Debug.Log("Login success Userid :"+user.UserID);
+                        Debug.Log("Login success Userid :" + user.UserID);
                         StartCoroutine(GetOrderData());
                         StartCoroutine(GetCartData());
                         if (callback != null) callback.Invoke(1);
 
                     }
-                    
+
                 }
 
             }
@@ -101,7 +104,7 @@ public class DataManager : MonoBehaviour
                 {
                     if (!tex.Equals("0"))
                     {
-                        StartCoroutine( GetBook(tex));
+                        StartCoroutine(GetBook(tex));
                     }
                     print(tex);
                 }
@@ -112,22 +115,23 @@ public class DataManager : MonoBehaviour
 
     IEnumerator GetBook(string tex)
     {
-        tex=tex.Remove(0,1);
+        tex = tex.Remove(0, 1);
         print(tex);
         print((tex.Length));
-        tex=tex.Remove((tex.Length)-1,1);
+        tex = tex.Remove((tex.Length) - 1, 1);
         string[] books = tex.Split(',');
         for (int i = 0; i < books.Length; i++)
         {
-            books[i]=books[i].Remove(0,1);
+            books[i] = books[i].Remove(0, 1);
             string v = books[i].Remove(books[i].Length - 1, 1);
             books[i] = v;
-           string[] detail = books[i].Split("-");
+            string[] detail = books[i].Split("-");
+            print(books[i]);
             WWWForm form = new WWWForm();
             book.Add(int.Parse(detail[0]), new Book(detail[1], int.Parse(detail[0]), int.Parse(detail[5]), detail[8], detail[4], detail[2], int.Parse(detail[6]), detail[3], detail[7]));
-            form.AddField("bookID",detail[0]) ;
+            form.AddField("bookID", detail[0]);
 
-            using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/Readly_Pj/GetImgBook.php",form))
+            using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/Readly_Pj/GetImgBook.php", form))
             {
                 yield return www.SendWebRequest();
 
@@ -143,7 +147,7 @@ public class DataManager : MonoBehaviour
                     {
                         if (!texe.Equals("0"))
                         {
-                            book[book.ElementAt(book.Count-1).Key].setImg(texe);
+                            book[book.ElementAt(book.Count - 1).Key].setImg(texe);
                         }
                         else
                         {
@@ -154,7 +158,16 @@ public class DataManager : MonoBehaviour
                 }
             }
         }
-        print("this is status book 1 :" + book[1].Status);
+        pageOrder.loadingBook();
+        addToCart.CloneCart();
+        /*StartCoroutine(GetOrderData(value =>
+        {
+            if (value == 1)
+            {
+                pageOrder.loadingOrder();
+            }
+        }));*/
+        //print("this is status book 1 :" + book[1].Status);
     }
     public IEnumerator GetOrderDetail(int id)
     {
@@ -200,7 +213,7 @@ public class DataManager : MonoBehaviour
                                 string[] detail2 = detail[i].Split("-");
                                 orders[id].setBookOrder(int.Parse(detail2[0]), int.Parse(detail2[1]));
                             }
-                                
+
                         }
                     }
 
@@ -256,7 +269,7 @@ public class DataManager : MonoBehaviour
             }
         }
     }
-    public IEnumerator CreateOrder(string address,Dictionary<Book,int> addBook, System.Action<int> callback = null)
+    public IEnumerator CreateOrder(string address, Dictionary<Book, int> addBook, System.Action<int> callback = null)
     {
         WWWForm form = new WWWForm();
         form.AddField("id", user.UserID);
@@ -287,7 +300,8 @@ public class DataManager : MonoBehaviour
                     {
                         WWWForm form2 = new WWWForm();
                         form2.AddField("orderID", tex);
-                        for (int i = 0; i < addBook.Count; i++) {
+                        for (int i = 0; i < addBook.Count; i++)
+                        {
                             form2.AddField("amount", addBook.ElementAt(i).Value);
                             form2.AddField("bookID", addBook.ElementAt(i).Key.Id);
 
@@ -300,7 +314,7 @@ public class DataManager : MonoBehaviour
                                 }
                                 else
                                 {
-                                    string text=www.downloadHandler.text;
+                                    string text = www.downloadHandler.text;
                                     if (text == "ss")
                                     {
                                         Debug.Log("add book to order ss");
@@ -309,7 +323,7 @@ public class DataManager : MonoBehaviour
                                 }
                             }
                         }
-                        
+
                         print("order sussess");
                         StartCoroutine(GetOrderData());
                         if (callback != null) callback.Invoke(1);
@@ -320,7 +334,7 @@ public class DataManager : MonoBehaviour
             }
         }
     }
-    public IEnumerator AddCartData(int bookID ,int num, System.Action<int> callback = null)
+    public IEnumerator AddCartData(int bookID, int num, System.Action<int> callback = null)
     {
         WWWForm form = new WWWForm();
         form.AddField("cartID", user.CastID);
@@ -348,9 +362,10 @@ public class DataManager : MonoBehaviour
                     }
                     else
                     {
-                        
+
                         print("add cart data ss");
                         callback?.Invoke(1);
+                        
                     }
 
                 }
@@ -386,7 +401,7 @@ public class DataManager : MonoBehaviour
                     }
                     else
                     {
-                        userCart.ChangAmountBookFromCart(bookID, num);
+                        userCart.ChangeAmountBookFromCart(bookID, num);
                         print("add cart data ss");
                         if (callback != null) callback.Invoke(1);
                     }
@@ -505,8 +520,8 @@ public class DataManager : MonoBehaviour
                             string v = order[i].Remove(order[i].Length - 1, 1);
                             order[i] = v;
                             string[] detail = order[i].Split("-");
-                            userCart.AddBookToCart(book[int.Parse(detail[0])],int.Parse(detail[1]));
-       
+                            userCart.AddBookToCart(book[int.Parse(detail[0])], int.Parse(detail[1]));
+
                         }
                         print("get cart data ss");
                     }
@@ -516,6 +531,12 @@ public class DataManager : MonoBehaviour
             }
         }
     }
+
+    
+
+    
 }
+
+
 
     
