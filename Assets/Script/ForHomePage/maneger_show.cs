@@ -11,6 +11,7 @@ using Unity.VisualScripting;
 using System.ComponentModel.Design;
 using System.Reflection;
 using UnityEditor.PackageManager;
+using static UnityEngine.Rendering.VolumeComponent;
 
 public class maneger_show : MonoBehaviour
 {
@@ -71,20 +72,22 @@ public class maneger_show : MonoBehaviour
         {
             DestroyImmediate(Alllist.GetChild(0).gameObject);
         }
+
     }
-  
-    
     public void loadingBook()
     {
-       
-        string selectedType = bookTypeDropdown.options[bookTypeDropdown.value].text;
 
+        string selectedType = bookTypeDropdown.options[bookTypeDropdown.value].text;
         while (Booklist.childCount > 0)
         {
-            DestroyImmediate(Booklist.GetChild(0).gameObject);
+                DestroyImmediate(Booklist.GetChild(0).gameObject);
 
         }
-
+        
+        while (Alllist.childCount > 0)
+        {
+            DestroyImmediate(Alllist.GetChild(0).gameObject);
+        }
         /*while (Booklist.childCount > 0)
         {
             DestroyImmediate(Booklist.GetChild(0).gameObject);
@@ -105,68 +108,76 @@ public class maneger_show : MonoBehaviour
         foreach (Book bo in DataManager.book.Values)
         {
 
-           
+            if (!string.Equals(bo.StatusString,statusBook.hide.ToString()))
+            {
+                
                 GameObject clone = Instantiate(AllPrefab);
                 clone.transform.parent = Alllist;
                 clone.GetComponent<RectTransform>().sizeDelta = new Vector2(1000, 100);
                 clone.GetComponent<Home_show>().b1 = bo;
                 clone.GetComponent<Home_show>().Show_home();
                 clone.SetActive(false);
+            }
+           
           
         }
             foreach (Book bo in DataManager.book.Values)
         {
-            
-            if (bo.TypeBook == selectedType)
+            if (!string.Equals(bo.StatusString, statusBook.hide.ToString()))
             {
-                GameObject clone = Instantiate(BookPrefab);
-                clone.transform.parent = Booklist;
-                clone.GetComponent<RectTransform>().sizeDelta = new Vector2(1000, 100);
-                clone.GetComponent<book_show>().b = bo;
-                clone.GetComponent<book_show>().Show();
-            }
-            else if (bo.Stock < 10 && bo.Stock != 0)
-            {
-                if (countbookbest < 7)
+               
+                if (bo.TypeBook == selectedType)
                 {
-                    GameObject clone = Instantiate(bestPrefab);
-                    clone.transform.parent = bestlist;
+                    GameObject clone = Instantiate(BookPrefab);
+                    clone.transform.parent = Booklist;
                     clone.GetComponent<RectTransform>().sizeDelta = new Vector2(1000, 100);
-                    clone.GetComponent<Home_show>().b1 = bo;
-                    clone.GetComponent<Home_show>().Show_home();
-                    countbookbest++;
-
+                    clone.GetComponent<book_show>().b = bo;
+                    clone.GetComponent<book_show>().Show();
+                  
                 }
-            }
-            else if(bo.Stock > 10)
-            {
-                if (countbookNew < 7)
+                else if (bo.Stock < 10 && bo.Stock != 0)
                 {
-                    GameObject clone = Instantiate(NewPrefab);
-                    clone.transform.parent = newlist;
-                    clone.GetComponent<RectTransform>().sizeDelta = new Vector2(1000, 100);
-                    clone.GetComponent<Home_show>().b1 = bo;
-                    clone.GetComponent<Home_show>().Show_home();
-                    countbookNew++;
-                    
-                }
-            }
-            else 
-            {
-                if (countbookre < 7)
-                {
-                   
-                    if (bo.TypeBook == "Horror"|| bo.TypeBook == "Self help" || bo.TypeBook == "Business" || bo.TypeBook == "Non_fiction"|| bo.TypeBook == "Novel" || bo.TypeBook == "Children")
+                    if (countbookbest < 7)
                     {
+                        GameObject clone = Instantiate(bestPrefab);
+                        clone.transform.parent = bestlist;
+                        clone.GetComponent<RectTransform>().sizeDelta = new Vector2(1000, 100);
+                        clone.GetComponent<Home_show>().b1 = bo;
+                        clone.GetComponent<Home_show>().Show_home();
+                        countbookbest++;
+
+                    }
+                }
+                else if (bo.Stock > 10)
+                {
+                    if (countbookNew < 7)
+                    {
+                        GameObject clone = Instantiate(NewPrefab);
+                        clone.transform.parent = newlist;
+                        clone.GetComponent<RectTransform>().sizeDelta = new Vector2(1000, 100);
+                        clone.GetComponent<Home_show>().b1 = bo;
+                        clone.GetComponent<Home_show>().Show_home();
+                        countbookNew++;
+
+                    }
+                }
+                else
+                {
+                    if (countbookre < 7)
+                    {
+
+                        if (bo.TypeBook == "Horror" || bo.TypeBook == "Self help" || bo.TypeBook == "Business" || bo.TypeBook == "Non_fiction" || bo.TypeBook == "Novel" || bo.TypeBook == "Children")
+                        {
                             GameObject clone = Instantiate(recomPrefab);
                             clone.transform.parent = recomlist;
                             clone.GetComponent<RectTransform>().sizeDelta = new Vector2(1000, 100);
                             clone.GetComponent<Home_show>().b1 = bo;
                             clone.GetComponent<Home_show>().Show_home();
                             countbookre++;
-                           
+
+                        }
+
                     }
-                    
                 }
             }
             

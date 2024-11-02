@@ -16,6 +16,7 @@ public class UILoaderDetail : MonoBehaviour
     public TMP_Text content;
     public TMP_Text price;
     public TMP_Dropdown bookTypeDropdown;
+    public TMP_InputField searchInputField;
     //public TMP_Text stock;
     //public TMP_Text status;
     public TMP_Text type;
@@ -25,11 +26,17 @@ public class UILoaderDetail : MonoBehaviour
 
     public GameObject bookDetailPage;
     public GameObject homeDetailPage;
-    private ImageManager imgMana;
+
+    public GameObject newbook;
+    public GameObject bestbook;
+    public GameObject recombook;
+    public GameObject All;
+    public GameObject header;
+    private ImageManager_show imgMana;
     private DataManager dataMana;
     private void Awake()
     {
-        imgMana = FindFirstObjectByType<ImageManager>();
+        imgMana = FindFirstObjectByType<ImageManager_show>();
         dataMana = FindFirstObjectByType<DataManager>();
     }
     public void ShowBookDetail(Book book)
@@ -53,11 +60,21 @@ public class UILoaderDetail : MonoBehaviour
         UIDetailPage.SetActive(false);
         bookDetailPage.SetActive(false);
         homeDetailPage.SetActive(true);
+        newbook.SetActive(true);
+        recombook.SetActive(true);
+        bestbook.SetActive(true);   
+        All.SetActive(false);
+        header.SetActive(true);
         ResetDropdown();
+        ClearSearch();
     }
     public void ResetDropdown()
     {
         bookTypeDropdown.value = 0; 
         bookTypeDropdown.RefreshShownValue(); 
+    }
+    void ClearSearch()
+    {
+        searchInputField.text = "";
     }
 }

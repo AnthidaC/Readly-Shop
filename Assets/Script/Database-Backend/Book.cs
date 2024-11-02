@@ -73,6 +73,16 @@ public class Book
             else if (value == "Out of stock"||value== "Out_of_stock") status = statusBook.Out_of_stock;
         }
     }
+    public string StatusString
+    {
+        get { return (status).ToString(); }
+        set
+        {
+            if (value == "on shelf" || value == "on_shelf") status = statusBook.on_shelf;
+            else if (value == "hide") status = statusBook.hide;
+            else if (value == "Out of stock" || value == "Out_of_stock") status = statusBook.Out_of_stock;
+        }
+    }
 
 
     public string Publisher { get => publisher; set => publisher = value; }
