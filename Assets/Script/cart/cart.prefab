@@ -65,10 +65,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WE CAN DO IT ddddddddddddddddddddddddddddddddddd
+  m_text: We are
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cc92c791a5a71af4492c96babeb9de82, type: 2}
-  m_sharedMaterial: {fileID: 596290710336197891, guid: cc92c791a5a71af4492c96babeb9de82, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a7ceb113e81552740aa96495e6f614a5, type: 2}
+  m_sharedMaterial: {fileID: 5761383144103525860, guid: a7ceb113e81552740aa96495e6f614a5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -473,7 +473,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3475881703035980520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbd1f97c54342c243acbf5307897a2f0, type: 3}
+  m_Script: {fileID: 11500000, guid: fc89af10abbee8d4faece07705cf0a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   book:
@@ -481,7 +481,7 @@ MonoBehaviour:
   image: {fileID: 3855363229374761102}
   title: {fileID: 1152151269811660555}
   type: {fileID: 7497619739798583577}
-  price: {fileID: 4818096005930268754}
+  price: {fileID: 4707645021660009088}
   count: {fileID: 5362332454815764576}
   amount: 0
 --- !u!1 &3527038241010188352
@@ -1220,8 +1220,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Name of type
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cc92c791a5a71af4492c96babeb9de82, type: 2}
-  m_sharedMaterial: {fileID: 596290710336197891, guid: cc92c791a5a71af4492c96babeb9de82, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1332,8 +1332,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 9163685164653302930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ff4e2d19b15e0942ae41c9c577babef, type: 3}
+  m_Script: {fileID: 11500000, guid: f896e9dc2bbf6a24b8bffc513bff215a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bo: {fileID: 0}
-  numbertext: {fileID: 5362332454815764576}
+  numbertext: {fileID: 0}

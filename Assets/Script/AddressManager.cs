@@ -36,7 +36,7 @@ public class AddressManager : MonoBehaviour
 
     public string Address
     {
-        get { return address; }
+        get { return address+" "+phone; }
         set { address = value; }
     }
 

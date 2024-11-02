@@ -141,7 +141,10 @@ public class Manager_order : MonoBehaviour
    
     string address = addressManager.Address;
 
-    StartCoroutine(dataManager.CreateOrder(address, DataManager.userCart.BooksInCart, OnOrderCreated));
+    StartCoroutine(dataManager.CreateOrder(address, DataManager.userCart.BooksInCart, v =>
+    {
+        OnOrderCreated(v);
+    }));
 }
 
 private void OnOrderCreated(int status)
@@ -151,7 +154,10 @@ private void OnOrderCreated(int status)
         ordersuccessPage.SetActive(true);
         
         StartCoroutine(dataManager.DeleteAllBookInCart(v=>{
-            OnDeleteCartCompleted(v);toPayPage.SetActive(false);}));
+
+            OnDeleteCartCompleted(v);
+            toPayPage.SetActive(false);
+        }));
             
     }
     else
@@ -164,7 +170,11 @@ private void OnDeleteCartCompleted(int status)
 {
     if (status == 1)
     {
-        Debug.Log("ลบข้อมูลในตะกร้าเรียบร้อยแล้ว");
+            DataManager.book.Clear();
+            dataManager.GetNormalData();
+            ToCart cart = FindAnyObjectByType<ToCart>();
+            cart.CloneCart();
+            Debug.Log("ลบข้อมูลในตะกร้าเรียบร้อยแล้ว");
     }
     else
     {

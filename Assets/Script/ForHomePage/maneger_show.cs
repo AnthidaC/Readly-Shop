@@ -180,7 +180,7 @@ public class maneger_show : MonoBehaviour
                     }
                 }
             }
-            
+            print("loading book sussess");
 
         }
         if (DataManager.book.Count > 6)

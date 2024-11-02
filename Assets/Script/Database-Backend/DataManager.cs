@@ -159,7 +159,6 @@ public class DataManager : MonoBehaviour
             }
         }
         pageOrder.loadingBook();
-        addToCart.CloneCart();
         /*StartCoroutine(GetOrderData(value =>
         {
             if (value == 1)
@@ -213,6 +212,7 @@ public class DataManager : MonoBehaviour
                                 string[] detail2 = detail[i].Split("-");
                                 orders[id].setBookOrder(int.Parse(detail2[0]), int.Parse(detail2[1]));
                             }
+                         
 
                         }
                     }
@@ -288,6 +288,7 @@ public class DataManager : MonoBehaviour
             else
             {
                 string tex = www.downloadHandler.text;
+                print(tex);
                 if (tex != null)
                 {
                     if (tex.Equals("0") || tex.Equals(" password  not correct") || tex.Equals("3: Name don't exists") || tex.Equals("1: Connect failed"))
@@ -308,25 +309,27 @@ public class DataManager : MonoBehaviour
                             using (UnityWebRequest www2 = UnityWebRequest.Post("http://localhost/Readly_Pj/SetBookInOrder.php", form2))
                             {
                                 yield return www2.SendWebRequest();
-                                if (www.isNetworkError || www.isHttpError)
+                                if (www2.isNetworkError || www2.isHttpError)
                                 {
-                                    Debug.Log(www.error);
+                                    Debug.Log(www2.error);
                                 }
                                 else
                                 {
-                                    string text = www.downloadHandler.text;
+                                    string text = www2.downloadHandler.text;
+                                    print(text);
                                     if (text == "ss")
                                     {
                                         Debug.Log("add book to order ss");
+                                        print("order sussess");
+                                        StartCoroutine(GetOrderData());
+                                        if (callback != null) callback.Invoke(1);
                                     }
 
                                 }
                             }
                         }
 
-                        print("order sussess");
-                        StartCoroutine(GetOrderData());
-                        if (callback != null) callback.Invoke(1);
+                        
                     }
 
                 }
@@ -527,6 +530,7 @@ public class DataManager : MonoBehaviour
                     }
 
                 }
+                addToCart.CloneCart();
 
             }
         }

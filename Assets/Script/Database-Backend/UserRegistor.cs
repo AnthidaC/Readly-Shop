@@ -26,10 +26,12 @@ public class UserRegistor : MonoBehaviour
     public GameObject loginError;
 
 
+
     
     [SerializeField]
     private DataManager dataManager;
     public int sceneHome;
+    public GameObject Home;
 
     private void Awake()
     {
@@ -82,7 +84,9 @@ public class UserRegistor : MonoBehaviour
                 {
                     loginError.SetActive(false);
                     print(DataManager.user.ToString()+" Wow");
-                    SceneManager.LoadScene(sceneHome);
+                    //SceneManager.LoadScene(sceneHome);
+                    Home.SetActive(true);
+                    this.gameObject.SetActive(false);
                 }
                 else
                 {

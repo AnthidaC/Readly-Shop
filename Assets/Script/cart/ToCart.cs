@@ -43,6 +43,7 @@ public class ToCart : MonoBehaviour
             DestroyImmediate(newlist.GetChild(0).gameObject);
         }
         this.sum = 0;
+        countbook = 0;
         foreach (var entry in DataManager.userCart.BooksInCart)
         {
             Book bo = entry.Key;
@@ -51,15 +52,14 @@ public class ToCart : MonoBehaviour
             clone.GetComponent<RectTransform>().sizeDelta = new Vector2(270, 100);
             clone.GetComponent<DetailOfCart>().book = bo;
             clone.GetComponent<DetailOfCart>().Show();
-            countbook++;
+            countbook+=entry.Value;
         }
-
         if (DataManager.book.Count > 6)
         {
             newlist.gameObject.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
         }
         print("Hi Page Order");
-
+        
     }
 
     public void DetailOfBook(Book book, GameObject t)

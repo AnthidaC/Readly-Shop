@@ -61,6 +61,6 @@ public class Cart
 
     public void Clear()
     {
-        this.booksInCart = null;
+        this.booksInCart.Clear();
     }
 }
