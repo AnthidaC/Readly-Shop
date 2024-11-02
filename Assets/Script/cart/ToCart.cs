@@ -32,6 +32,7 @@ public class ToCart : MonoBehaviour
 
     public void ButtonPressAdd(int n)
     {
+        Debug.Log("Call me");
         sum = sum + n;
         numbertext.text = sum + "";
     }
@@ -44,6 +45,7 @@ public class ToCart : MonoBehaviour
         }
         this.sum = 0;
         countbook = 0;
+        Receipt rep = FindFirstObjectByType<Receipt>();
         foreach (var entry in DataManager.userCart.BooksInCart)
         {
             Book bo = entry.Key;
@@ -59,7 +61,9 @@ public class ToCart : MonoBehaviour
             newlist.gameObject.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
         }
         print("Hi Page Order");
-        
+        ButtonPressAdd(countbook);
+        rep.ReceiptBook();
+
     }
 
     public void DetailOfBook(Book book, GameObject t)

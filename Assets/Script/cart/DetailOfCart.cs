@@ -24,8 +24,6 @@ public class DetailOfCart : MonoBehaviour
         type.text = book.TypeBook;
         price.text = book.Price.ToString() + " ฿";
         count.text = DataManager.userCart.BooksInCart[book].ToString() + " เล่ม";
-        ToCart pM = FindFirstObjectByType<ToCart>();
-        pM.ButtonPressAdd(DataManager.userCart.BooksInCart[book]);
         Texture2D myTexture2D = book.imgBook;
         if (myTexture2D != null) 
             image.sprite = Sprite.Create(myTexture2D, new Rect(0.0f, 0.0f, myTexture2D.width, myTexture2D.height), new Vector2(0.5f, 0.5f), 100.0f);
