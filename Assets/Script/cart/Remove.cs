@@ -5,11 +5,10 @@ using UnityEngine;
 public class Remove : MonoBehaviour
 {
     public Book id;
-
     public void Removebook()
     {
-        ToCart pM = FindFirstObjectByType<ToCart>();
-        pM.RemoveBook(id.Id);
+        Cart pM = DataManager.userCart;
+        pM.RemoveBookFromCart(id.Id);
 
     }
 }

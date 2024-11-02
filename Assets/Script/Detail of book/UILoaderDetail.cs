@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 using static Unity.Collections.AllocatorManager;
+using static UnityEditor.PlayerSettings;
 
 public class UILoaderDetail : MonoBehaviour
 {
@@ -22,11 +24,16 @@ public class UILoaderDetail : MonoBehaviour
     public TMP_Text Author;
     public TMP_Text Publisher;
     private GameObject bookObject;
+    public Book Orderbook;
 
     public GameObject bookDetailPage;
     public GameObject homeDetailPage;
     private ImageManager imgMana;
     private DataManager dataMana;
+
+    public NumberInDe NumIn;
+    
+
     private void Awake()
     {
         imgMana = FindFirstObjectByType<ImageManager>();
@@ -47,6 +54,7 @@ public class UILoaderDetail : MonoBehaviour
         Publisher.text = "สำนักพิมพ์ :"+book.Publisher;
         content.text = "เรื่องย่อ : \n"+book.Title;
         //bookObject = t;
+        Orderbook = book;
     }
     public void GoBackToMainPage()
     {
@@ -60,4 +68,51 @@ public class UILoaderDetail : MonoBehaviour
         bookTypeDropdown.value = 0; 
         bookTypeDropdown.RefreshShownValue(); 
     }
+
+    
+    public void Addto()
+    {
+
+        DataManager db = FindFirstObjectByType <DataManager> ();
+        ToCart cart = FindFirstObjectByType<ToCart> ();
+        Receipt rep = FindFirstObjectByType<Receipt>();
+        bool i = DataManager.userCart.AddBookToCart(Orderbook, NumIn.ButtonPressIncrease);
+        if (i)
+        {
+            StartCoroutine(db.AddCartData(Orderbook.Id, NumIn.ButtonPressIncrease, value =>
+            {
+                if (value == 0) {
+                    UnityEngine.Debug.LogError("Add cart data error");
+                }
+                else
+                {
+                    print("Add cart to database ss");
+                    rep.ReceiptBook();
+                    cart.CloneCart();
+                    
+                }
+            }));
+        }
+        else
+        {
+            int bookId = Orderbook.Id; 
+            int newAmount = DataManager.userCart.BooksInCart[Orderbook];
+            StartCoroutine(db.ChangeNumBookInCart(bookId, newAmount, value =>
+            {
+                if (value == 0)
+                {
+                    UnityEngine.Debug.LogError("ChangeNum cart data error");
+                }
+                else
+                {
+                    print("ChangeNum cart to database ss");
+                    cart.CloneCart();
+                    rep.ReceiptBook();
+                }
+            }));
+        }
+
+    }
+    
+
 }

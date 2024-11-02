@@ -2038,18 +2038,14 @@ MonoBehaviour:
   bookName: {fileID: 0}
   price: {fileID: 0}
   type: {fileID: 0}
-  NumIn: {fileID: 0}
+  NumOfCart: {fileID: 0}
   numbertext: {fileID: 1691203370}
-  AllOrder: 0
-  n: 0
   c:
     imgBook: {fileID: 0}
   book:
     imgBook: {fileID: 0}
   NewPrefab: {fileID: 0}
   newlist: {fileID: 0}
-  id:
-    imgBook: {fileID: 0}
 --- !u!1 &283812621
 GameObject:
   m_ObjectHideFlags: 0
@@ -2310,6 +2306,66 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &325251842
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 325251844}
+  - component: {fileID: 325251843}
+  m_Layer: 0
+  m_Name: meneger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &325251843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325251842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81150edb4f45e9444bad6c4ad713404f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BookPrefab: {fileID: 0}
+  Booklist: {fileID: 0}
+  bookDetailPage: {fileID: 0}
+  bookimg: {fileID: 0}
+  bookName: {fileID: 0}
+  price: {fileID: 0}
+  bookTypeDropdown: {fileID: 0}
+  NewPrefab: {fileID: 0}
+  newlist: {fileID: 0}
+  newprice: {fileID: 0}
+  bestPrefab: {fileID: 0}
+  bestlist: {fileID: 0}
+  recomPrefab: {fileID: 0}
+  recomlist: {fileID: 0}
+  homeDetailPage: {fileID: 0}
+  homeimg: {fileID: 0}
+--- !u!4 &325251844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325251842}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1063.2264, y: 476.61282, z: 3.9376116}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &334979427
 GameObject:
   m_ObjectHideFlags: 0
@@ -6121,15 +6177,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a81d2b9c1f826b4b906de6dae929d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bookDetailPage: {fileID: 1503345608}
-  Main: {fileID: 461394542}
+  UIDetailPage: {fileID: 0}
   bookimg: {fileID: 1550447905}
   bookName: {fileID: 352332691}
   content: {fileID: 1582694892867357477}
   price: {fileID: 1683334903}
+  bookTypeDropdown: {fileID: 0}
   type: {fileID: 1965085459}
   Author: {fileID: 5416990450244809679}
   Publisher: {fileID: 5257081538699405588}
+  bookDetailPage: {fileID: 1503345608}
+  homeDetailPage: {fileID: 461394542}
+  NumIn: {fileID: 0}
 --- !u!1 &1051705013
 GameObject:
   m_ObjectHideFlags: 0
@@ -6845,6 +6904,30 @@ PrefabInstance:
     - target: {fileID: 4777239740875060563, guid: d98f9e512f1adee47b94e6f526512690, type: 3}
       propertyPath: price
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284781591790275106, guid: d98f9e512f1adee47b94e6f526512690, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284781591790275106, guid: d98f9e512f1adee47b94e6f526512690, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284781591790275106, guid: d98f9e512f1adee47b94e6f526512690, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284781591790275106, guid: d98f9e512f1adee47b94e6f526512690, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 330
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284781591790275106, guid: d98f9e512f1adee47b94e6f526512690, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284781591790275106, guid: d98f9e512f1adee47b94e6f526512690, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -211.79
       objectReference: {fileID: 0}
     - target: {fileID: 5410341293083507236, guid: d98f9e512f1adee47b94e6f526512690, type: 3}
       propertyPath: m_Name
@@ -9721,18 +9804,14 @@ MonoBehaviour:
   bookName: {fileID: 352332691}
   price: {fileID: 1683334903}
   type: {fileID: 1965085459}
-  NumIn: {fileID: 0}
+  NumOfCart: {fileID: 0}
   numbertext: {fileID: 0}
-  AllOrder: 0
-  n: 0
   c:
     imgBook: {fileID: 0}
   book:
     imgBook: {fileID: 0}
   NewPrefab: {fileID: 3475881703035980520, guid: 5cd8263d6ff24af419a025b090d0c8d1, type: 3}
   newlist: {fileID: 1218511265}
-  id:
-    imgBook: {fileID: 0}
 --- !u!4 &1665606127
 Transform:
   m_ObjectHideFlags: 0
@@ -9779,8 +9858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bbd0362e040d54fbb9a6e5139559bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  book:
-    imgBook: {fileID: 0}
+  r: {fileID: 0}
   NumIn: {fileID: 233018841}
 --- !u!114 &1665606130
 MonoBehaviour:
@@ -12542,15 +12620,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f27c1178bd480e4fa37ac4f39705256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  b:
-    imgBook: {fileID: 0}
-  price: {fileID: 232676714}
-  nam: {fileID: 2137877537875296767}
-  image: {fileID: 2881505690827784182}
-  type: {fileID: 8024759518138609256}
-  Author: {fileID: 5416990450244809679}
-  Publisher: {fileID: 5257081538699405588}
-  content: {fileID: 1582694892867357477}
 --- !u!114 &2818920003489094503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13185,3 +13254,4 @@ SceneRoots:
   - {fileID: 1042173617}
   - {fileID: 1665606127}
   - {fileID: 1595591113}
+  - {fileID: 325251844}

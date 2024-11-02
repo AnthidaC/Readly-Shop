@@ -8,17 +8,23 @@ using System.Threading;
 
 public class NumberInDe : MonoBehaviour
 {
-    public Book bo;
+    public  UILoaderDetail bo;
     public TextMeshProUGUI numbertext;
     int count = 1;
     int value = 1;
-  
+
+    public void Start()
+    {
+        bo = FindFirstObjectByType<UILoaderDetail>();
+
+    }
     public int ButtonPressIncrease
     {
         get { return count; }
         set
         {
-            if (count < bo.Stock)
+            print(bo.Orderbook.Stock);
+            if (count < bo.Orderbook.Stock)
             {
 
                 count++;
@@ -41,5 +47,7 @@ public class NumberInDe : MonoBehaviour
             print(count);
         }
     }
+
+
 
 }
