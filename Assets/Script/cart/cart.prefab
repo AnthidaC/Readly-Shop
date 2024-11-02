@@ -481,7 +481,7 @@ MonoBehaviour:
   image: {fileID: 3855363229374761102}
   title: {fileID: 1152151269811660555}
   type: {fileID: 7497619739798583577}
-  price: {fileID: 4707645021660009088}
+  price: {fileID: 4818096005930268754}
   count: {fileID: 5362332454815764576}
   amount: 0
 --- !u!1 &3527038241010188352

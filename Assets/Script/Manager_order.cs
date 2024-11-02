@@ -21,7 +21,7 @@ public class Manager_order : MonoBehaviour
  
     
 
-    private void Start()
+    public void Pay()
     {
         dataManager = FindFirstObjectByType<DataManager>();
         StartCoroutine(GetAndDisplayCartOrder());
@@ -32,7 +32,6 @@ public class Manager_order : MonoBehaviour
 
     private IEnumerator GetAndDisplayCartOrder()
     {
-        yield return dataManager.GetCartData();
 
         if (DataManager.userCart != null && DataManager.userCart.BooksInCart != null && DataManager.userCart.BooksInCart.Count > 0)
         {
@@ -43,6 +42,7 @@ public class Manager_order : MonoBehaviour
         {
             Debug.Log("ไม่มีข้อมูลในตะกร้า");
         }
+        yield return null;
     }
 
    private IEnumerator DisplayCartItems()
@@ -55,12 +55,12 @@ public class Manager_order : MonoBehaviour
            yield break;
        }
 
-       foreach (Transform child in contentPanel)
+       for (int i=1;i<contentPanel.childCount-1;i++)
        {
+            Transform child = contentPanel.GetChild(i);
            if (child != null && child.gameObject != null)
            {
                Destroy(child.gameObject);
-               yield return null; 
            }
        }
 
@@ -71,13 +71,13 @@ public class Manager_order : MonoBehaviour
            if (bookPrefab != null)
            {
                GameObject bookInstance = Instantiate(bookPrefab, contentPanel);
-
+                bookInstance.transform.SetSiblingIndex(1);
                Book bookData = item.Key; 
 
                string decodedName = Regex.Unescape(bookData.Name); 
 
                Debug.Log("Book Title: " + decodedName);
-            
+                
                TMP_Text nameText = bookInstance.transform.Find("name")?.GetComponent<TMP_Text>();
                TMP_Text priceText = bookInstance.transform.Find("price")?.GetComponent<TMP_Text>();
                TMP_Text amountText = bookInstance.transform.Find("amount")?.GetComponent<TMP_Text>();

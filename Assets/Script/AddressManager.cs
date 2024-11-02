@@ -36,7 +36,7 @@ public class AddressManager : MonoBehaviour
 
     public string Address
     {
-        get { return address+" "+phone; }
+        get { return address; }
         set { address = value; }
     }
 
@@ -84,6 +84,7 @@ public class AddressManager : MonoBehaviour
 
         popupPage.SetActive(false);
         toPayPage.SetActive(true);
+            toPayPage.GetComponent<Manager_order>().Pay();
         errorMessage.text = "";
     }
     else
