@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-public enum typeBook
+public enum typeBook:int
 {
     Self_help = 0,
     Children = 1,
@@ -72,6 +72,14 @@ public class Book
             else if (value == "hide") status = statusBook.hide;
             else if (value == "Out of stock"||value== "Out_of_stock") status = statusBook.Out_of_stock;
         }
+    } public int StatusInt
+    {
+        get { return (int)status; }
+        set
+        {
+            status = (statusBook)value;
+        }
+
     }
 
 

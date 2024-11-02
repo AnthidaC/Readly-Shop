@@ -41,6 +41,15 @@ public class Order
             else if (value == "complete") status = orderStatus.complete;
         }
     }
+    public int StatusInt
+    {
+        get => ((int)status);
+        set
+        {
+            status = (orderStatus)value;
+            
+        }
+    }
     public int UserID { get => userID; set => userID = value; }
 
     public Order(int ordarID, int UserID, string orderDetail, int cartID)
