@@ -17,16 +17,18 @@ public class Manager_order : MonoBehaviour
     public GameObject toPayPage; 
     public GameObject ordersuccessPage;
     public TextMeshProUGUI totalSumText; 
-    public TextMeshProUGUI finalSumText; 
- 
-    
+    public TextMeshProUGUI finalSumText;
 
+
+    public void Start()
+    {
+        orderToggle.onValueChanged.AddListener(OnToggleChanged);
+        orderButton.onClick.AddListener(OnOrderButtonClicked);
+    }
     public void Pay()
     {
         dataManager = FindFirstObjectByType<DataManager>();
         StartCoroutine(GetAndDisplayCartOrder());
-        orderToggle.onValueChanged.AddListener(OnToggleChanged);
-        orderButton.onClick.AddListener(OnOrderButtonClicked); 
         UpdateOrderButtonState();
     }
 
@@ -140,7 +142,7 @@ public class Manager_order : MonoBehaviour
 {
    
     string address = addressManager.Address;
-
+        orderButton.interactable = false;
     StartCoroutine(dataManager.CreateOrder(address, DataManager.userCart.BooksInCart, v =>
     {
         OnOrderCreated(v);
@@ -156,7 +158,9 @@ private void OnOrderCreated(int status)
         StartCoroutine(dataManager.DeleteAllBookInCart(v=>{
 
             OnDeleteCartCompleted(v);
+            orderButton.interactable = true;
             toPayPage.SetActive(false);
+
         }));
             
     }
@@ -170,8 +174,8 @@ private void OnDeleteCartCompleted(int status)
 {
     if (status == 1)
     {
-            DataManager.book.Clear();
             dataManager.GetNormalData();
+            dataManager.GetOrderData();
             ToCart cart = FindAnyObjectByType<ToCart>();
             cart.CloneCart();
             Debug.Log("ลบข้อมูลในตะกร้าเรียบร้อยแล้ว");

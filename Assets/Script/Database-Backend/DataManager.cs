@@ -212,7 +212,8 @@ public class DataManager : MonoBehaviour
                                 string[] detail2 = detail[i].Split("-");
                                 orders[id].setBookOrder(int.Parse(detail2[0]), int.Parse(detail2[1]));
                             }
-                         
+                            Orderhistory orderhistory = FindFirstObjectByType<Orderhistory>();
+                            orderhistory.LoadOrder();
 
                         }
                     }
@@ -247,6 +248,7 @@ public class DataManager : MonoBehaviour
                     }
                     else
                     {
+                        orders.Clear();
                         tex = tex.Remove(0, 1);
                         print(tex);
                         print((tex.Length));

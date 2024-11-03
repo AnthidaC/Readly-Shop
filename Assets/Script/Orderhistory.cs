@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -36,7 +37,6 @@ public class Orderhistory : MonoBehaviour
         var contentSizeFitter = Orderlist.gameObject.AddComponent<ContentSizeFitter>();
         contentSizeFitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
 
-        LoadOrder();
         UpdateCostDisplay();
     }
 
@@ -48,10 +48,9 @@ public class Orderhistory : MonoBehaviour
             return;
         }
 
-        
-        for(int i=0;i<Orderlist.childCount;i++)
-        {
-           Destroy(Orderlist.GetChild(0).gameObject);
+
+        while (Orderlist.childCount > 0) {
+            DestroyImmediate(Orderlist.GetChild(0).gameObject);
         }
        
         int orderCount = 0;
