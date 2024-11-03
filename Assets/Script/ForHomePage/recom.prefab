@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1580110497650358959}
   - component: {fileID: 2576767166615218138}
   - component: {fileID: 727695326373158181}
+  - component: {fileID: 8223130018734863424}
   m_Layer: 5
   m_Name: recom
   m_TagString: Untagged
@@ -152,6 +153,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8223130018734863424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036127251090557484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.3254902}
+  m_EffectDistance: {x: 15, y: -16}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1043379607511806363
 GameObject:
   m_ObjectHideFlags: 0

@@ -52,7 +52,7 @@ public class UILoaderDetail : MonoBehaviour
         //status.text = ((statusBook)int.Parse(book.Status)).ToString();
         Author.text = "ผู้เขียน :"+book.Author;
         Publisher.text = "สำนักพิมพ์ :"+book.Publisher;
-        content.text = "เรื่องย่อ : \n"+book.Title;
+        content.text = "เรื่องย่อ : \n\n"+book.Title;
         //bookObject = t;
         Orderbook = book;
     }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6459760654011974437}
   - component: {fileID: 8087910027893771024}
   - component: {fileID: 8055905530695827794}
+  - component: {fileID: 6706216640260888333}
   m_Layer: 5
   m_Name: AllBook 1
   m_TagString: Untagged
@@ -135,6 +136,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!114 &6706216640260888333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3515823435989890626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.3254902}
+  m_EffectDistance: {x: 15, y: -16}
+  m_UseGraphicAlpha: 1
 --- !u!1 &3690055032378537917
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,8 +218,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cc92c791a5a71af4492c96babeb9de82, type: 2}
-  m_sharedMaterial: {fileID: 596290710336197891, guid: cc92c791a5a71af4492c96babeb9de82, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2154ade35cd87b9478c54afa15b150f4, type: 2}
+  m_sharedMaterial: {fileID: 2098321693394530431, guid: 2154ade35cd87b9478c54afa15b150f4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

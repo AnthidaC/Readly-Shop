@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8147150040512796512}
   - component: {fileID: 1382976864207693247}
   - component: {fileID: 81680676460564343}
+  - component: {fileID: 7294314103876543671}
   m_Layer: 5
   m_Name: homeBook
   m_TagString: Untagged
@@ -96,6 +97,21 @@ MonoBehaviour:
   image: {fileID: 4600167548358340063}
   price: {fileID: 5604780359105737142}
   name: {fileID: 0}
+--- !u!114 &7294314103876543671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071511586901696111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.3254902}
+  m_EffectDistance: {x: 15, y: -16}
+  m_UseGraphicAlpha: 1
 --- !u!1 &3852115748464983020
 GameObject:
   m_ObjectHideFlags: 0

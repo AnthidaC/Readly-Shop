@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 5963146466041086946}
   - component: {fileID: 90273810280011337}
   - component: {fileID: 183379497448055630}
+  - component: {fileID: 8352928975306587162}
   m_Layer: 5
   m_Name: Bestseller
   m_TagString: Untagged
@@ -382,6 +383,21 @@ MonoBehaviour:
   image: {fileID: 5889332225346962753}
   price: {fileID: 5018996878929799179}
   name: {fileID: 0}
+--- !u!114 &8352928975306587162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6558865894412150098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.3254902}
+  m_EffectDistance: {x: 15, y: -16}
+  m_UseGraphicAlpha: 1
 --- !u!1 &8611760841591489876
 GameObject:
   m_ObjectHideFlags: 0
