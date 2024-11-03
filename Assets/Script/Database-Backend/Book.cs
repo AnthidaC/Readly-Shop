@@ -3,11 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.UI;
+
 
 public enum typeBook:int
 {

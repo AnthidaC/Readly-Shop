@@ -6916,6 +6916,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -125.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7385280572737909257, guid: 5ac00e41f3520af48aceb6ffc54452e3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7769210268084789419, guid: 5ac00e41f3520af48aceb6ffc54452e3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6923,6 +6927,26 @@ PrefabInstance:
     - target: {fileID: 7769210268084789419, guid: 5ac00e41f3520af48aceb6ffc54452e3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: RegistorSubmit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879107555302725155, guid: 5ac00e41f3520af48aceb6ffc54452e3, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879107555302725155, guid: 5ac00e41f3520af48aceb6ffc54452e3, type: 3}
+      propertyPath: m_InputType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879107555302725155, guid: 5ac00e41f3520af48aceb6ffc54452e3, type: 3}
+      propertyPath: m_ContentType
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879107555302725155, guid: 5ac00e41f3520af48aceb6ffc54452e3, type: 3}
+      propertyPath: m_KeyboardType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879107555302725155, guid: 5ac00e41f3520af48aceb6ffc54452e3, type: 3}
+      propertyPath: m_CharacterValidation
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

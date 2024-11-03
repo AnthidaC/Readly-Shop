@@ -9,8 +9,7 @@ using System.Linq;
 using System;
 using Unity.VisualScripting;
 using System.ComponentModel.Design;
-using System.Reflection;
-using UnityEditor.PackageManager;
+
 using static UnityEngine.Rendering.VolumeComponent;
 
 public class maneger_show : MonoBehaviour

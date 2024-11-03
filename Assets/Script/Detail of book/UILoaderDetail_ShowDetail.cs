@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using static Unity.Collections.AllocatorManager;
-using static UnityEditor.PlayerSettings;
+
 
 public class UILoaderDetail : MonoBehaviour
 {
