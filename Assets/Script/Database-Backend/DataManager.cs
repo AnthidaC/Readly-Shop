@@ -244,6 +244,8 @@ public class DataManager : MonoBehaviour
                     if (tex.Equals("0") || tex.Equals(" password  not correct") || tex.Equals("3: Name don't exists") || tex.Equals("1: Connect failed"))
                     {
                         print("Error get order data or have null order data");
+                        Orderhistory orderhistory = FindFirstObjectByType<Orderhistory>();
+                        orderhistory.LoadOrder();
                         yield return null;
                     }
                     else
