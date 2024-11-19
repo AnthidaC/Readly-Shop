@@ -1,6 +1,6 @@
 # Readly-Shop
 - Book Shop Readly -
-
+Book Buying Application
 # OOP Project 
 Make with unity 
 Database connection is necessary to operate
